@@ -36,10 +36,49 @@
       </div>
     </form>
   </mat-step>
-  <mat-step [stepControl]="educationFormGroup" label="Educazione">
-    <form [formGroup]="educationFormGroup">
-
-    </form>
+  <mat-step [stepControl]="educationItemsFormGroup" label="Educazione">
+      <ng-container *ngFor="let educationItemFormGroup of educationItemsAsFormGroupArray; let i = index">
+        <form class="form-group" [formGroup]="educationItemFormGroup">
+          <mat-form-field appearance="fill">
+            <mat-label>Data di Inizio</mat-label>
+            <input matInput [matDatepicker]="picker" formControlName="dateOfStart">
+            <mat-hint>MM/DD/YYYY</mat-hint>
+            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+          <mat-form-field appearance="fill">
+            <mat-label>Data di Fine</mat-label>
+            <input matInput [matDatepicker]="picker1" formControlName="dateOfEnd">
+            <mat-hint>MM/DD/YYYY</mat-hint>
+            <mat-datepicker-toggle matIconSuffix [for]="picker1"></mat-datepicker-toggle>
+            <mat-datepicker #picker1></mat-datepicker>
+          </mat-form-field>
+          <mat-form-field appearance="fill">
+            <mat-label>Luogo</mat-label>
+            <input matInput formControlName="location">
+          </mat-form-field>
+          <mat-form-field appearance="fill">
+            <mat-label>Descrizione</mat-label>
+            <textarea matInput formControlName="description"></textarea>
+          </mat-form-field>
+          <mat-form-field appearance="fill">
+            <mat-label>Indirizzo</mat-label>
+            <input matInput formControlName="field">
+          </mat-form-field>
+          <mat-form-field appearance="fill">
+            <mat-label>Titolo</mat-label>
+            <input matInput formControlName="title">
+          </mat-form-field>
+          <mat-form-field appearance="fill">
+            <mat-label>Voto Finale</mat-label>
+            <input matInput formControlName="graduation">
+          </mat-form-field>
+          <mat-icon class="delete-btn" (click)="deleteEducationItem(i)">delete_forever</mat-icon>
+        </form>
+      </ng-container>
+    <mat-button-toggle mat-mini-fab (click)="addEducationItem()">
+      <mat-icon class="add-course-btn">add</mat-icon>
+    </mat-button-toggle>
   </mat-step>
   <mat-step [stepControl]="skillsFormGroup" label="Competenze">
     <form [formGroup]="skillsFormGroup">
@@ -47,9 +86,7 @@
     </form>
   </mat-step>
   <mat-step label="Esperienze professionali">
-    <form>
 
-    </form>
   </mat-step>
   <mat-step label="Genera Curriculum">
     <div>

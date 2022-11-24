@@ -9,12 +9,12 @@ import {FormArray, FormBuilder, FormGroup, Validators} from "@angular/forms";
 export class CvFormComponent implements OnInit {
 
   userFormGroup: FormGroup;
-  educationFormGroup: FormGroup;
+  educationItemsFormGroup: FormGroup;
   skillsFormGroup: FormGroup;
 
   constructor(private formBuilder: FormBuilder) {
     this.userFormGroup = this.buildUserFromGroup();
-    this.educationFormGroup = this.buildEducationFormGroup()
+    this.educationItemsFormGroup = this.buildEducationFormGroup()
     this.skillsFormGroup = this.buildSkillsFormGroup();
   }
 
@@ -24,13 +24,13 @@ export class CvFormComponent implements OnInit {
 
   buildUserFromGroup(): FormGroup {
     return this.formBuilder.group({
-      name: ['', Validators.required],
-      surname: ['', Validators.required],
-      dateOfBirth: ['', Validators.required],
-      email: ['', Validators.required],
-      phoneNumber: ['', Validators.required],
-      address: ['', Validators.required],
-      intro: ['', Validators.required]
+      name: [''],
+      surname: [''],
+      dateOfBirth: [''],
+      email: [''],
+      phoneNumber: [''],
+      address: [''],
+      intro: ['']
     })
   }
 
@@ -84,4 +84,29 @@ export class CvFormComponent implements OnInit {
   //     link: ['', Validators.required]
   //   })
   //                                  ])
+
+  get educationItems() {
+    return this.educationItemsFormGroup.controls["educationItems"] as FormArray;
+  }
+
+  get educationItemsAsFormGroupArray() {
+    return this.educationItems.controls as FormGroup[];
+  }
+
+  addEducationItem() {
+    const educationItem = this.formBuilder.group({
+      dateOfStart: ['', Validators.required],
+      dateOfEnd: ['', Validators.required],
+      location: ['', Validators.required],
+      description: ['', Validators.required],
+      field: ['', Validators.required],
+      title: ['', Validators.required],
+      graduation: ['', Validators.required]
+    })
+    this.educationItems.push(educationItem);
+  }
+
+  deleteEducationItem(index: number) {
+    this.educationItems.removeAt(index);
+  }
 }

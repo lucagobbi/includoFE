@@ -38,13 +38,13 @@ export class CvFormComponent implements OnInit {
     return this.formBuilder.group({
       educationItems: this.formBuilder.array([
         this.formBuilder.group({
-          dateOfStart: ['', Validators.required],
-          dateOfEnd: ['', Validators.required],
-          location: ['', Validators.required],
-          description: ['', Validators.required],
-          field: ['', Validators.required],
-          title: ['', Validators.required],
-          graduation: ['', Validators.required]
+          dateOfStart: [''],
+          dateOfEnd: [''],
+          location: [''],
+          description: [''],
+          field: [''],
+          title: [''],
+          graduation: ['']
         })
       ]),
     })
@@ -54,8 +54,37 @@ export class CvFormComponent implements OnInit {
     return this.formBuilder.group({
       skills: this.formBuilder.array([
         this.formBuilder.group({
-          title: ['', Validators.required],
-          level: ['', Validators.required]
+          title: [''],
+          level: ['']
+        })
+      ])
+    })
+  }
+
+  buildExperienceItemsFormGroup(): FormGroup {
+    return this.formBuilder.group({
+      experienceItems: this.formBuilder.array([
+        this.formBuilder.group({
+          dateOfStart: [''],
+          dateOfEnd: [''],
+          location: [''],
+          description: [''],
+          appliedSkills: this.formBuilder.array([
+            this.formBuilder.group({
+              title: [''],
+              level: ['']
+            })
+          ])
+    })])
+    })
+  }
+
+  buildContactsFormGroup(): FormGroup {
+    return this.formBuilder.group({
+      contacts: this.formBuilder.array([
+        this.formBuilder.group({
+          social: [''],
+          link: ['']
         })
       ])
     })
@@ -63,27 +92,31 @@ export class CvFormComponent implements OnInit {
 
 
 
-  // experienceItems: this.formBuilder.array([
-  //                                           this.formBuilder.group({
-  //     dateOfStart: ['', Validators.required],
-  //     dateOfEnd: ['', Validators.required],
-  //     location: ['', Validators.required],
-  //     description: ['', Validators.required],
-  //     appliedSkills: this.formBuilder.array([
-  //     this.formBuilder.group({
-  //       title: ['', Validators.required],
-  //       level: ['', Validators.required]
-  //     })
-  //   ])
-  //                                           })
-  //                                         ]),
-  //                                ]),
-  // contacts: this.formBuilder.array([
-  //                                    this.formBuilder.group({
-  //     social: ['', Validators.required],
-  //     link: ['', Validators.required]
-  //   })
-  //                                  ])
+
+
+  get skills() {
+    return this.skillsFormGroup.controls["skills"] as FormArray;
+  }
+
+  get skillsAsFormGroupArray() {
+    return this.skills.controls as FormGroup[];
+  }
+
+  addSkill() {
+    const skill = this.formBuilder.group({
+      title: ['', Validators.required],
+      level: ['', Validators.required]
+    })
+    this.skills.push(skill);
+  }
+
+  deleteSkill(index: number) {
+    this.skills.removeAt(index);
+  }
+
+  formatLabel(value: number): string {
+    return `${value}`;
+  }
 
   get educationItems() {
     return this.educationItemsFormGroup.controls["educationItems"] as FormArray;

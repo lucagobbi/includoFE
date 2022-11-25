@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
-import { CvFormComponent } from './cv-form/cv-form.component';
+import { CvFormComponent } from './components/cv-form/cv-form.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatSelectModule} from "@angular/material/select";
@@ -13,11 +13,17 @@ import {MatDatepickerModule} from "@angular/material/datepicker";
 import {MatStepperModule} from "@angular/material/stepper";
 import {MatIconModule} from "@angular/material/icon";
 import {MatButtonToggleModule} from "@angular/material/button-toggle";
+import { NavbarComponent } from './components/navbar/navbar/navbar.component';
+import {MatToolbarModule} from "@angular/material/toolbar";
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import {MatSliderModule} from "@angular/material/slider";
+import {MatTooltipModule} from "@angular/material/tooltip";
 
 @NgModule({
   declarations: [
     AppComponent,
-    CvFormComponent
+    CvFormComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
@@ -31,7 +37,11 @@ import {MatButtonToggleModule} from "@angular/material/button-toggle";
     MatNativeDateModule,
     MatStepperModule,
     MatIconModule,
-    MatButtonToggleModule
+    MatButtonToggleModule,
+    MatToolbarModule,
+    NgbModule,
+    MatSliderModule,
+    MatTooltipModule
   ],
   providers: [],
   bootstrap: [AppComponent]

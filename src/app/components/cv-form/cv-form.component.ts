@@ -4,7 +4,7 @@ import {FormArray, FormBuilder, FormGroup, Validators} from "@angular/forms";
 @Component({
   selector: 'app-cv-form',
   templateUrl: './cv-form.component.html',
-  styleUrls: ['./cv-form.component.css']
+  styleUrls: ['./cv-form.component.scss']
 })
 export class CvFormComponent implements OnInit {
 

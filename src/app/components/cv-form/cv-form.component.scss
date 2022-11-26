@@ -1,0 +1,10 @@
+.form-group {
+  display: flex;
+  flex-direction: column;
+  margin-top: 1rem;
+
+  .delete-btn {
+    width: 50px;
+    margin: auto;
+  }
+}

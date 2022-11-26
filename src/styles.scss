@@ -3,5 +3,16 @@
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
+.form-group {
+  display: flex;
+  flex-direction: column;
+  margin-top: 1rem;
+
+  .delete-btn {
+    width: 50px;
+    margin: auto;
+  }
+}
+
 /* Importing Bootstrap SCSS file. */
 @import '~bootstrap/scss/bootstrap';

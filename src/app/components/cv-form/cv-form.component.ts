@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {FormArray, FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {Curriculum} from "../../model/Curriculum";
+import {CurriculumService} from "../../service/curriculum.service";
 
 @Component({
   selector: 'app-cv-form',
@@ -20,7 +22,8 @@ export class CvFormComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  downloadCV() {}
+  downloadCV() {
+  }
 
   buildUserFromGroup(): FormGroup {
     return this.formBuilder.group({

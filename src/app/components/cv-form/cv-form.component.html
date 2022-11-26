@@ -1,40 +1,7 @@
 <div class="container px-2 py-4">
   <mat-stepper orientation="vertical" [linear]="true" #stepper>
     <mat-step [stepControl]="userFormGroup" label="Dati personali">
-      <form [formGroup]="userFormGroup">
-        <div class="form-group">
-          <mat-form-field appearance="fill">
-            <mat-label>Nome</mat-label>
-            <input matInput formControlName="name">
-          </mat-form-field>
-          <mat-form-field appearance="fill">
-            <mat-label>Cognome</mat-label>
-            <input matInput formControlName="surname">
-          </mat-form-field>
-          <mat-form-field appearance="fill">
-            <mat-label>Data di nascita</mat-label>
-            <input matInput [matDatepicker]="picker" formControlName="dateOfBirth">
-            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-            <mat-datepicker #picker></mat-datepicker>
-          </mat-form-field>
-          <mat-form-field appearance="fill">
-            <mat-label>Email</mat-label>
-            <input matInput formControlName="email">
-          </mat-form-field>
-          <mat-form-field appearance="fill">
-            <mat-label>phoneNumber</mat-label>
-            <input matInput formControlName="phoneNumber">
-          </mat-form-field>
-          <mat-form-field appearance="fill">
-            <mat-label>Address</mat-label>
-            <input matInput formControlName="address">
-          </mat-form-field>
-          <mat-form-field appearance="fill">
-            <mat-label>Introduzione</mat-label>
-            <textarea matInput formControlName="intro"></textarea>
-          </mat-form-field>
-        </div>
-      </form>
+      <app-user-form [userFormGroup]="userFormGroup"></app-user-form>
     </mat-step>
     <mat-step [stepControl]="educationItemsFormGroup" label="Educazione">
       <ng-container *ngFor="let educationItemFormGroup of educationItemsAsFormGroupArray; let i = index">
@@ -100,10 +67,9 @@
     <mat-step label="Esperienze professionali">
 
     </mat-step>
-    <mat-step label="Genera Curriculum">
+    <mat-step label="Genera Curriculum" class="d-flex justify-content-center">
       <div>
-        <button mat-button matStepperPrevious>Back</button>
-        <button mat-button (click)="stepper.reset()">Reset</button>
+        <mat-button-toggle>Genera</mat-button-toggle>
       </div>
     </mat-step>
   </mat-stepper>

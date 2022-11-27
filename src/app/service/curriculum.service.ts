@@ -13,12 +13,9 @@ import {FormBuilder, FormGroup} from "@angular/forms";
 })
 export class CurriculumService {
 
-  RPI_URL = 'http://192.168.1.245/curriculum/generate';
-
   constructor(private http: HttpClient, private formBuilder: FormBuilder) {}
 
   generateCV(cv: Curriculum) {
-    // this.http.post(this.RPI_URL, cv);
     alert('Calling back end...\n' + 'Payload: ' + '\n' + JSON.stringify(cv));
   }
 

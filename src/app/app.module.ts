@@ -18,14 +18,24 @@ import {MatToolbarModule} from "@angular/material/toolbar";
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import {MatSliderModule} from "@angular/material/slider";
 import {MatTooltipModule} from "@angular/material/tooltip";
-import { UserFormComponent } from './components/user-form/user-form.component';
+import { UserFormComponent } from './components/cv-form/user-form/user-form.component';
+import { EducationFormComponent } from './components/cv-form/education-form/education-form.component';
+import { SkillFormComponent } from './components/cv-form/skill-form/skill-form.component';
+import { ExperienceFormComponent } from './components/cv-form/experience-form/experience-form.component';
+import { ContactFormComponent } from './components/cv-form/contact-form/contact-form.component';
+import { BaseItemComponent } from './components/cv-form/base-item/base-item.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CvFormComponent,
     NavbarComponent,
-    UserFormComponent
+    UserFormComponent,
+    EducationFormComponent,
+    SkillFormComponent,
+    ExperienceFormComponent,
+    ContactFormComponent,
+    BaseItemComponent
   ],
   imports: [
     BrowserModule,

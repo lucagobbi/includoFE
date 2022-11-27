@@ -1,76 +1,65 @@
 <div class="container px-2 py-4">
-  <mat-stepper orientation="vertical" [linear]="true" #stepper>
+  <mat-stepper orientation="vertical" [linear]="true">
+
+    <!-- User Form -->
     <mat-step [stepControl]="userFormGroup" label="Dati personali">
       <app-user-form [userFormGroup]="userFormGroup"></app-user-form>
     </mat-step>
+
+    <!-- Education Form -->
     <mat-step [stepControl]="educationItemsFormGroup" label="Educazione">
       <ng-container *ngFor="let educationItemFormGroup of educationItemsAsFormGroupArray; let i = index">
-        <form class="form-group" [formGroup]="educationItemFormGroup">
-          <mat-form-field appearance="fill">
-            <mat-label>Data di Inizio</mat-label>
-            <input matInput [matDatepicker]="picker" formControlName="dateOfStart">
-            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-            <mat-datepicker #picker></mat-datepicker>
-          </mat-form-field>
-          <mat-form-field appearance="fill">
-            <mat-label>Data di Fine</mat-label>
-            <input matInput [matDatepicker]="picker1" formControlName="dateOfEnd">
-            <mat-datepicker-toggle matIconSuffix [for]="picker1"></mat-datepicker-toggle>
-            <mat-datepicker #picker1></mat-datepicker>
-          </mat-form-field>
-          <mat-form-field appearance="fill">
-            <mat-label>Luogo</mat-label>
-            <input matInput formControlName="location">
-          </mat-form-field>
-          <mat-form-field appearance="fill">
-            <mat-label>Descrizione</mat-label>
-            <textarea matInput formControlName="description"></textarea>
-          </mat-form-field>
-          <mat-form-field appearance="fill">
-            <mat-label>Indirizzo</mat-label>
-            <input matInput formControlName="field">
-          </mat-form-field>
-          <mat-form-field appearance="fill">
-            <mat-label>Titolo</mat-label>
-            <input matInput formControlName="title">
-          </mat-form-field>
-          <mat-form-field appearance="fill">
-            <mat-label>Voto Finale</mat-label>
-            <input matInput formControlName="graduation">
-          </mat-form-field>
-          <mat-button-toggle class="delete-btn" >
-            <mat-icon (click)="deleteEducationItem(i)">delete_forever</mat-icon>
-          </mat-button-toggle>
-        </form>
+        <app-education-form [formGroup]="educationItemFormGroup" [index]="i"
+                            (deleteEvent)="deleteItem($event, educationItems)">
+        </app-education-form>
       </ng-container>
       <mat-button-toggle mat-mini-fab class="add-btn" (click)="addEducationItem()">
         <mat-icon>add</mat-icon>
       </mat-button-toggle>
     </mat-step>
+
+    <!-- Skill Form -->
     <mat-step [stepControl]="skillsFormGroup" label="Competenze">
       <ng-container *ngFor="let skillFormGroup of skillsAsFormGroupArray; let i = index">
-        <form class="form-group" [formGroup]="skillFormGroup">
-          <mat-form-field appearance="fill">
-            <mat-label>Competenza</mat-label>
-            <input matInput formControlName="title">
-          </mat-form-field>
-          <mat-slider min="0" max="100" step="1" formControlName="level"
-                      [displayWith]="formatLabel">
-            <input matSliderThumb>
-          </mat-slider>
-        </form>
+        <app-skill-form [formGroup]="skillFormGroup" [index]="i"
+                        (deleteEvent)="deleteItem($event, skills)">
+        </app-skill-form>
       </ng-container>
       <mat-button-toggle mat-mini-fab (click)="addSkill()">
         <mat-icon class="add-btn">add</mat-icon>
       </mat-button-toggle>
     </mat-step>
-    <mat-step label="Esperienze professionali">
 
+    <!-- Experience Form -->
+    <mat-step label="Esperienze professionali">
+      <ng-container *ngFor="let experienceItemFormGroup of experienceItemsAsFormGroupArray; let i = index">
+        <app-experience-form [formGroup]="experienceItemFormGroup"
+                             [index]="i" (deleteEvent)="deleteItem($event, experienceItems)">
+        </app-experience-form>
+      </ng-container>
+      <mat-button-toggle mat-mini-fab (click)="addExperienceItem()">
+        <mat-icon class="add-btn">add</mat-icon>
+      </mat-button-toggle>
     </mat-step>
-    <mat-step label="Genera Curriculum" class="d-flex justify-content-center">
+
+    <!-- Contact Form -->
+    <mat-step label="Contatti">
+      <ng-container *ngFor="let contactFormGroup of contactsAsFormGroupArray; let i = index">
+        <app-contact-form [formGroup]="contactFormGroup" [index]="i"
+                          (deleteEvent)="deleteItem($event, contacts)">
+        </app-contact-form>
+      </ng-container>
+      <mat-button-toggle mat-mini-fab (click)="addContact()">
+        <mat-icon class="add-btn">add</mat-icon>
+      </mat-button-toggle>
+    </mat-step>
+
+    <!-- Generate CV -->
+    <mat-step label="Genera Curriculum">
       <div>
         <mat-button-toggle>Genera</mat-button-toggle>
       </div>
     </mat-step>
+
   </mat-stepper>
 </div>

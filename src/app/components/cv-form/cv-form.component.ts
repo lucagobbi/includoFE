@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import {FormArray, FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {Curriculum} from "../../model/Curriculum";
-import {CurriculumService} from "../../service/curriculum.service";
 
 @Component({
   selector: 'app-cv-form',
@@ -13,11 +11,15 @@ export class CvFormComponent implements OnInit {
   userFormGroup: FormGroup;
   educationItemsFormGroup: FormGroup;
   skillsFormGroup: FormGroup;
+  experienceItemsFormGroup: FormGroup;
+  contactsFormGroup: FormGroup;
 
   constructor(private formBuilder: FormBuilder) {
     this.userFormGroup = this.buildUserFromGroup();
     this.educationItemsFormGroup = this.buildEducationFormGroup()
     this.skillsFormGroup = this.buildSkillsFormGroup();
+    this.experienceItemsFormGroup = this.buildExperienceItemsFormGroup();
+    this.contactsFormGroup = this.buildContactsFormGroup();
   }
 
   ngOnInit(): void {}
@@ -72,12 +74,7 @@ export class CvFormComponent implements OnInit {
           dateOfEnd: [''],
           location: [''],
           description: [''],
-          appliedSkills: this.formBuilder.array([
-            this.formBuilder.group({
-              title: [''],
-              level: ['']
-            })
-          ])
+          appliedSkills: ['']
     })])
     })
   }
@@ -93,9 +90,26 @@ export class CvFormComponent implements OnInit {
     })
   }
 
+  get educationItems() {
+    return this.educationItemsFormGroup.controls["educationItems"] as FormArray;
+  }
 
+  get educationItemsAsFormGroupArray() {
+    return this.educationItems.controls as FormGroup[];
+  }
 
-
+  addEducationItem() {
+    const educationItem = this.formBuilder.group({
+      dateOfStart: [''],
+      dateOfEnd: [''],
+      location: [''],
+      description: [''],
+      field: [''],
+      title: [''],
+      graduation: ['']
+    })
+    this.educationItems.push(educationItem);
+  }
 
   get skills() {
     return this.skillsFormGroup.controls["skills"] as FormArray;
@@ -107,42 +121,49 @@ export class CvFormComponent implements OnInit {
 
   addSkill() {
     const skill = this.formBuilder.group({
-      title: ['', Validators.required],
-      level: ['', Validators.required]
+      title: [''],
+      level: ['']
     })
     this.skills.push(skill);
   }
 
-  deleteSkill(index: number) {
-    this.skills.removeAt(index);
+  get experienceItems() {
+    return this.experienceItemsFormGroup.controls["experienceItems"] as FormArray;
   }
 
-  formatLabel(value: number): string {
-    return `${value}`;
+  get experienceItemsAsFormGroupArray() {
+    return this.experienceItems.controls as FormGroup[];
   }
 
-  get educationItems() {
-    return this.educationItemsFormGroup.controls["educationItems"] as FormArray;
-  }
-
-  get educationItemsAsFormGroupArray() {
-    return this.educationItems.controls as FormGroup[];
-  }
-
-  addEducationItem() {
-    const educationItem = this.formBuilder.group({
-      dateOfStart: ['', Validators.required],
-      dateOfEnd: ['', Validators.required],
-      location: ['', Validators.required],
-      description: ['', Validators.required],
-      field: ['', Validators.required],
-      title: ['', Validators.required],
-      graduation: ['', Validators.required]
+  addExperienceItem() {
+    const experienceItem = this.formBuilder.group({
+      dateOfStart: [''],
+      dateOfEnd: [''],
+      location: [''],
+      description: [''],
+      appliedSkills: ['']
     })
-    this.educationItems.push(educationItem);
+    this.experienceItems.push(experienceItem);
   }
 
-  deleteEducationItem(index: number) {
-    this.educationItems.removeAt(index);
+  get contacts() {
+    return this.contactsFormGroup.controls["contacts"] as FormArray;
   }
+
+  get contactsAsFormGroupArray() {
+    return this.contacts.controls as FormGroup[];
+  }
+
+  addContact() {
+    const contact = this.formBuilder.group({
+      social: [''],
+      link: ['']
+    })
+    this.contacts.push(contact);
+  }
+
+  deleteItem(index: any, formArray: FormArray) {
+    formArray.removeAt(index);
+  }
+
 }

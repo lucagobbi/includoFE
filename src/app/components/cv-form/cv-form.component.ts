@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {FormArray, FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {FormArray, FormBuilder, FormGroup} from "@angular/forms";
+import {CurriculumService} from "../../service/curriculum.service";
+import {Curriculum} from "../../model/Curriculum";
 
 @Component({
   selector: 'app-cv-form',
@@ -14,80 +16,25 @@ export class CvFormComponent implements OnInit {
   experienceItemsFormGroup: FormGroup;
   contactsFormGroup: FormGroup;
 
-  constructor(private formBuilder: FormBuilder) {
-    this.userFormGroup = this.buildUserFromGroup();
-    this.educationItemsFormGroup = this.buildEducationFormGroup()
-    this.skillsFormGroup = this.buildSkillsFormGroup();
-    this.experienceItemsFormGroup = this.buildExperienceItemsFormGroup();
-    this.contactsFormGroup = this.buildContactsFormGroup();
+  constructor(private formBuilder: FormBuilder, private curriculumService: CurriculumService) {
+    this.userFormGroup = this.curriculumService.buildUserFromGroup();
+    this.educationItemsFormGroup = this.curriculumService.buildEducationFormGroup()
+    this.skillsFormGroup = this.curriculumService.buildSkillsFormGroup();
+    this.experienceItemsFormGroup = this.curriculumService.buildExperienceItemsFormGroup();
+    this.contactsFormGroup = this.curriculumService.buildContactsFormGroup();
   }
 
   ngOnInit(): void {}
 
   downloadCV() {
-  }
-
-  buildUserFromGroup(): FormGroup {
-    return this.formBuilder.group({
-      name: [''],
-      surname: [''],
-      dateOfBirth: [''],
-      email: [''],
-      phoneNumber: [''],
-      address: [''],
-      intro: ['']
-    })
-  }
-
-  buildEducationFormGroup(): FormGroup {
-    return this.formBuilder.group({
-      educationItems: this.formBuilder.array([
-        this.formBuilder.group({
-          dateOfStart: [''],
-          dateOfEnd: [''],
-          location: [''],
-          description: [''],
-          field: [''],
-          title: [''],
-          graduation: ['']
-        })
-      ]),
-    })
-  }
-
-  buildSkillsFormGroup(): FormGroup {
-    return this.formBuilder.group({
-      skills: this.formBuilder.array([
-        this.formBuilder.group({
-          title: [''],
-          level: ['']
-        })
-      ])
-    })
-  }
-
-  buildExperienceItemsFormGroup(): FormGroup {
-    return this.formBuilder.group({
-      experienceItems: this.formBuilder.array([
-        this.formBuilder.group({
-          dateOfStart: [''],
-          dateOfEnd: [''],
-          location: [''],
-          description: [''],
-          appliedSkills: ['']
-    })])
-    })
-  }
-
-  buildContactsFormGroup(): FormGroup {
-    return this.formBuilder.group({
-      contacts: this.formBuilder.array([
-        this.formBuilder.group({
-          social: [''],
-          link: ['']
-        })
-      ])
-    })
+    const user = this.curriculumService.collectUserData(this.userFormGroup);
+    const intro = this.curriculumService.getUserIntro(this.userFormGroup);
+    const educationItems = this.curriculumService.collectEducationData(this.educationItemsAsFormGroupArray);
+    const skills = this.curriculumService.collectSkillsData(this.skillsAsFormGroupArray);
+    const experienceItems = this.curriculumService.collectExperienceData(this.experienceItemsAsFormGroupArray);
+    const contacts = this.curriculumService.collectContactData(this.contactsAsFormGroupArray);
+    const cv = new Curriculum(user, intro, educationItems, experienceItems, skills, contacts);
+    this.curriculumService.generateCV(cv);
   }
 
   get educationItems() {

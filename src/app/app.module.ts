@@ -24,6 +24,7 @@ import { SkillFormComponent } from './components/cv-form/skill-form/skill-form.c
 import { ExperienceFormComponent } from './components/cv-form/experience-form/experience-form.component';
 import { ContactFormComponent } from './components/cv-form/contact-form/contact-form.component';
 import { BaseItemComponent } from './components/cv-form/base-item/base-item.component';
+import {HttpClientModule} from "@angular/common/http";
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import { BaseItemComponent } from './components/cv-form/base-item/base-item.comp
     BaseItemComponent
   ],
   imports: [
+    HttpClientModule,
     BrowserModule,
     BrowserAnimationsModule,
     ReactiveFormsModule,

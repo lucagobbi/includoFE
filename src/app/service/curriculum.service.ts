@@ -7,13 +7,22 @@ import {Skill} from "../model/Skill";
 import {ExperienceItem} from "../model/ExperienceItem";
 import {Contact} from "../model/Contact";
 import {FormBuilder, FormGroup} from "@angular/forms";
+import {Observable} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
 })
 export class CurriculumService {
 
+  imgUrl = 'http://localhost:8080/curriculum/upload';
+
   constructor(private http: HttpClient, private formBuilder: FormBuilder) {}
+
+  generateImgPdf(img: any): Observable<any> {
+    const formData = new FormData();
+    formData.append('img', img);
+    return this.http.post(this.imgUrl, formData);
+  }
 
   generateCV(cv: Curriculum) {
     alert('Calling back end...\n' + 'Payload: ' + '\n' + JSON.stringify(cv));
@@ -93,13 +102,13 @@ export class CurriculumService {
 
   buildUserFromGroup(): FormGroup {
     return this.formBuilder.group({
-      name: [''],
-      surname: [''],
-      dateOfBirth: [''],
-      email: [''],
-      phoneNumber: [''],
-      address: [''],
-      intro: ['']
+      name: ['Mario'],
+      surname: ['Rossi'],
+      dateOfBirth: [new Date()],
+      email: ['mariorossi@mail.it'],
+      phoneNumber: ['333224579'],
+      address: ['Via della Spiga 7, Milano, 20121'],
+      intro: ['Sviluppatore software, full-stack developer']
     })
   }
 
@@ -107,13 +116,13 @@ export class CurriculumService {
     return this.formBuilder.group({
       educationItems: this.formBuilder.array([
         this.formBuilder.group({
-          dateOfStart: [''],
-          dateOfEnd: [''],
-          location: [''],
-          description: [''],
-          field: [''],
-          title: [''],
-          graduation: ['']
+          dateOfStart: [new Date()],
+          dateOfEnd: [new Date()],
+          location: ['Milano, Università degli studi'],
+          description: ['Laurea in scienze informatiche'],
+          field: ['Scienze informatiche'],
+          title: ['Dottore in scienze informatiche'],
+          graduation: ['102/110']
         })
       ]),
     })
@@ -123,8 +132,8 @@ export class CurriculumService {
     return this.formBuilder.group({
       skills: this.formBuilder.array([
         this.formBuilder.group({
-          title: [''],
-          level: ['']
+          title: ['Java'],
+          level: [87]
         })
       ])
     })
@@ -134,11 +143,11 @@ export class CurriculumService {
     return this.formBuilder.group({
       experienceItems: this.formBuilder.array([
         this.formBuilder.group({
-          dateOfStart: [''],
-          dateOfEnd: [''],
-          location: [''],
-          description: [''],
-          appliedSkills: ['']
+          dateOfStart: [new Date()],
+          dateOfEnd: [new Date()],
+          location: ['Accenture, Milano'],
+          description: ['BE developer'],
+          appliedSkills: ['Java']
         })])
     })
   }
@@ -147,8 +156,8 @@ export class CurriculumService {
     return this.formBuilder.group({
       contacts: this.formBuilder.array([
         this.formBuilder.group({
-          social: [''],
-          link: ['']
+          social: ['Linkedin'],
+          link: ['www.linkedin.it/mariorossi']
         })
       ])
     })

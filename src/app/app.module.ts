@@ -25,6 +25,10 @@ import { ExperienceFormComponent } from './components/cv-form/experience-form/ex
 import { ContactFormComponent } from './components/cv-form/contact-form/contact-form.component';
 import { BaseItemComponent } from './components/cv-form/base-item/base-item.component';
 import {HttpClientModule} from "@angular/common/http";
+import { FileDropDirective } from './directives/file-drop.directive';
+import { UploadFileComponent } from './components/upload-file/upload-file.component';
+import {NgxTranslateModule} from "../translate/translate.module";
+import {BsDropdownModule} from "ngx-bootstrap/dropdown";
 
 @NgModule({
   declarations: [
@@ -36,7 +40,9 @@ import {HttpClientModule} from "@angular/common/http";
     SkillFormComponent,
     ExperienceFormComponent,
     ContactFormComponent,
-    BaseItemComponent
+    BaseItemComponent,
+    FileDropDirective,
+    UploadFileComponent
   ],
   imports: [
     HttpClientModule,
@@ -55,7 +61,9 @@ import {HttpClientModule} from "@angular/common/http";
     MatToolbarModule,
     NgbModule,
     MatSliderModule,
-    MatTooltipModule
+    MatTooltipModule,
+    BsDropdownModule,
+    NgxTranslateModule
   ],
   providers: [],
   bootstrap: [AppComponent]

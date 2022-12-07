@@ -1,0 +1,30 @@
+{
+  "personalData": "información personal",
+  "education": "carrera académica",
+  "skills": "habilidades",
+  "professionalCareer": "carrera profesional",
+  "contacts": "contactos",
+  "generateCv": "generar currículum",
+  "generate": "generar",
+  "dropFileHere": "soltar el archivo aquí",
+  "user": {
+    "name": "nombre",
+    "surname": "apellido",
+    "dateOfBirth": "fecha de nacimiento",
+    "email": "Email",
+    "phoneNumber": "número de teléfono",
+    "address": "Dirección",
+    "intro": "Introducción"
+  },
+  "skill": "habilidad",
+  "dateOfStart": "Fecha de inicio",
+  "dateOfEnd": "Fecha de fin",
+  "location": "ubicación",
+  "description": "descripción",
+  "appliedSkills": "habilidades aplicadas",
+  "field": "campo",
+  "degreeTitle": "la licenciatura",
+  "finalDegree": "votar",
+  "social": "red social",
+  "link": "Enlace"
+}

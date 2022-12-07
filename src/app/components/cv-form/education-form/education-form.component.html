@@ -1,34 +1,34 @@
 <form class="form-group" [formGroup]="formGroup">
   <mat-form-field appearance="fill">
-    <mat-label>Data di Inizio</mat-label>
+    <mat-label>{{"dateOfStart" | translate | titlecase}}</mat-label>
     <input matInput [matDatepicker]="picker" formControlName="dateOfStart">
     <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
     <mat-datepicker #picker></mat-datepicker>
   </mat-form-field>
   <mat-form-field appearance="fill">
-    <mat-label>Data di Fine</mat-label>
+    <mat-label>{{"dateOfEnd" | translate | titlecase}}</mat-label>
     <input matInput [matDatepicker]="picker1" formControlName="dateOfEnd">
     <mat-datepicker-toggle matIconSuffix [for]="picker1"></mat-datepicker-toggle>
     <mat-datepicker #picker1></mat-datepicker>
   </mat-form-field>
   <mat-form-field appearance="fill">
-    <mat-label>Luogo</mat-label>
+    <mat-label>{{"location" | translate | titlecase}}</mat-label>
     <input matInput formControlName="location">
   </mat-form-field>
   <mat-form-field appearance="fill">
-    <mat-label>Descrizione</mat-label>
+    <mat-label>{{"description" | translate | titlecase}}</mat-label>
     <textarea matInput formControlName="description"></textarea>
   </mat-form-field>
   <mat-form-field appearance="fill">
-    <mat-label>Indirizzo</mat-label>
+    <mat-label>{{"field" | translate | titlecase}}</mat-label>
     <input matInput formControlName="field">
   </mat-form-field>
   <mat-form-field appearance="fill">
-    <mat-label>Titolo</mat-label>
+    <mat-label>{{"degreeTitle" | translate | titlecase}}</mat-label>
     <input matInput formControlName="title">
   </mat-form-field>
   <mat-form-field appearance="fill">
-    <mat-label>Voto Finale</mat-label>
+    <mat-label>{{"finalDegree" | translate | titlecase}}</mat-label>
     <input matInput formControlName="graduation">
   </mat-form-field>
   <mat-button-toggle class="delete-btn" >

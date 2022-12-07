@@ -1,10 +1,10 @@
 <form class="form-group" [formGroup]="formGroup">
   <mat-form-field appearance="fill">
-    <mat-label>Social</mat-label>
+    <mat-label>{{"social" | translate | titlecase}}</mat-label>
     <input matInput formControlName="social">
   </mat-form-field>
   <mat-form-field appearance="fill">
-    <mat-label>Link</mat-label>
+    <mat-label>{{"link" | translate | titlecase}}</mat-label>
     <input matInput formControlName="link">
   </mat-form-field>
   <mat-button-toggle class="delete-btn" >

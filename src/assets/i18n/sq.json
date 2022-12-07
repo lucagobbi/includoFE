@@ -1,0 +1,30 @@
+{
+  "personalData": "te dhena Personale",
+  "education": "karrierë akademike",
+  "skills": "aftësi",
+  "professionalCareer": "karrierë profesionale",
+  "contacts": "kontakte",
+  "generateCv": "Gjeneroni kurrikulën",
+  "generate": "krijoj",
+  "dropFileHere": "Hidhni skedarin këtu",
+  "user": {
+    "name": "emër",
+    "surname": "mbiemër",
+    "dateOfBirth": "Data e lindjes",
+    "email": "postë elektronike",
+    "phoneNumber": "Numri i telefonit",
+    "address": "adresë",
+    "intro": "Prezantimi"
+  },
+  "skill": "aftësi",
+  "dateOfStart": "data e fillimit",
+  "dateOfEnd": "data e mbarimit",
+  "location": "vend",
+  "description": "përshkrim",
+  "appliedSkills": "aftësi të aplikuara",
+  "field": "fushë",
+  "degreeTitle": "shkallë",
+  "finalDegree": "votim",
+  "social": "rrjet social",
+  "link": "lidhje"
+}

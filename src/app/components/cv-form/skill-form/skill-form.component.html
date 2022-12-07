@@ -1,6 +1,6 @@
 <form class="form-group" [formGroup]="formGroup">
   <mat-form-field appearance="fill">
-    <mat-label>Competenza</mat-label>
+    <mat-label>{{"skill" | translate | titlecase}}</mat-label>
     <input matInput formControlName="title">
   </mat-form-field>
   <mat-slider min="0" max="100" step="1" formControlName="level">

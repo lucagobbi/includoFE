@@ -1,0 +1,30 @@
+{
+  "personalData": "personal data",
+  "education": "academic career",
+  "skills": "skills",
+  "professionalCareer": "professional career",
+  "contacts": "contacts",
+  "generateCv": "generate curriculum",
+  "generate": "generate",
+  "dropFileHere": "drop file here",
+  "user": {
+    "name": "Name",
+    "surname": "Surname",
+    "dateOfBirth": "Date of Birth",
+    "email": "Email",
+    "phoneNumber": "Phone Number",
+    "address": "Address",
+    "intro": "Introduction"
+  },
+  "skill": "Skill",
+  "dateOfStart": "Date of Start",
+  "dateOfEnd": "Date of End",
+  "location": "Location",
+  "description": "Description",
+  "appliedSkills": "Applied Skills",
+  "field": "Field",
+  "degreeTitle": "Degree Title",
+  "finalDegree": "Final Degree",
+  "social": "Social Network",
+  "link": "Link"
+}

@@ -1,3 +1,32 @@
-<mat-toolbar color="primary">
-  <span>IncluDO</span>
+<mat-toolbar color="primary" class="d-flex justify-content-between">
+    <span>IncluDO</span>
+    <div class="btn-group" dropdown>
+      <button
+        id="button-animated"
+        dropdownToggle
+        type="button"
+        class="btn dropdown-toggle text-white"
+        aria-controls="dropdown-animated"
+      >
+        <span [className]="'me-2 flag-icon flag-icon-'+selectedLanguage?.iso?.toLocaleLowerCase()"></span>
+        <span class="caret"></span>
+      </button>
+      <ul
+        id="dropdown-animated"
+        *dropdownMenu
+        class="dropdown-menu dropdown-menu-right"
+        role="menu"
+        aria-labelledby="button-animated"
+      >
+        <ng-container *ngFor="let language of languageList">
+          <li role="menuitem">
+            <a
+              class="dropdown-item"
+              (click)="changeSiteLanguage(language.code)">
+              <span [className]="'flag-icon flag-icon-'+language.iso.toLocaleLowerCase()"></span> {{ language.label }}
+            </a>
+          </li>
+        </ng-container>
+      </ul>
+    </div>
 </mat-toolbar>

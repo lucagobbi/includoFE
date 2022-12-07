@@ -1,33 +1,33 @@
 <form [formGroup]="userFormGroup">
   <div class="form-group">
     <mat-form-field appearance="fill">
-      <mat-label>Nome</mat-label>
+      <mat-label>{{"user.name" | translate | titlecase }}</mat-label>
       <input matInput formControlName="name">
     </mat-form-field>
     <mat-form-field appearance="fill">
-      <mat-label>Cognome</mat-label>
+      <mat-label >{{"user.surname" | translate | titlecase }}</mat-label>
       <input matInput formControlName="surname">
     </mat-form-field>
     <mat-form-field appearance="fill">
-      <mat-label>Data di nascita</mat-label>
+      <mat-label>{{"user.dateOfBirth" | translate | titlecase}}</mat-label>
       <input matInput [matDatepicker]="picker" formControlName="dateOfBirth">
       <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
       <mat-datepicker #picker></mat-datepicker>
     </mat-form-field>
     <mat-form-field appearance="fill">
-      <mat-label>Email</mat-label>
+      <mat-label>{{"user.email" | translate | titlecase }}</mat-label>
       <input matInput formControlName="email">
     </mat-form-field>
     <mat-form-field appearance="fill">
-      <mat-label>phoneNumber</mat-label>
+      <mat-label>{{"user.phoneNumber" | translate | titlecase}}</mat-label>
       <input matInput formControlName="phoneNumber">
     </mat-form-field>
     <mat-form-field appearance="fill">
-      <mat-label>Address</mat-label>
+      <mat-label>{{"user.address" | translate | titlecase}}</mat-label>
       <input matInput formControlName="address">
     </mat-form-field>
     <mat-form-field appearance="fill">
-      <mat-label>Introduzione</mat-label>
+      <mat-label>{{"user.intro" | translate | titlecase}}</mat-label>
       <textarea matInput formControlName="intro"></textarea>
     </mat-form-field>
   </div>

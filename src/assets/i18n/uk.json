@@ -1,0 +1,30 @@
+{
+  "personalData": "особисті дані",
+  "education": "академічна кар’єра",
+  "skills": "навички",
+  "professionalCareer": "Професійна кар’єра",
+  "contacts": "контакти",
+  "generateCv": "генерувати навчальну програму",
+  "generate": "генерувати",
+  "dropFileHere": "Спустіть файл сюди",
+  "user": {
+    "name": "назва",
+    "surname": "прізвище",
+    "dateOfBirth": "дата народження",
+    "email": "електронна пошта",
+    "phoneNumber": "телефонний номер",
+    "address": "адреса",
+    "intro": "вступ"
+  },
+  "skill": "навичка",
+  "dateOfStart": "Дата початку",
+  "dateOfEnd": "дата кінця",
+  "location": "Місцезнаходження",
+  "description": "опис",
+  "appliedSkills": "застосовані навички",
+  "field": "поле",
+  "degreeTitle": "ступінь",
+  "finalDegree": "голосувати",
+  "social": "соціальна мережа",
+  "link": "зв'язок"
+}

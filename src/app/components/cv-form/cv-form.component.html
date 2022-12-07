@@ -2,12 +2,12 @@
   <mat-stepper orientation="vertical" [linear]="true">
 
     <!-- User Form -->
-    <mat-step [stepControl]="userFormGroup" label="Dati personali">
+    <mat-step [stepControl]="userFormGroup" [label]="getMatLabelI18n('personalData') | titlecase">
       <app-user-form [userFormGroup]="userFormGroup"></app-user-form>
     </mat-step>
 
     <!-- Education Form -->
-    <mat-step [stepControl]="educationItemsFormGroup" label="Educazione">
+    <mat-step [stepControl]="educationItemsFormGroup" [label]="getMatLabelI18n('education') | titlecase">
       <ng-container *ngFor="let educationItemFormGroup of educationItemsAsFormGroupArray; let i = index">
         <app-education-form [formGroup]="educationItemFormGroup" [index]="i"
                             (deleteEvent)="deleteItem($event, educationItems)">
@@ -19,7 +19,7 @@
     </mat-step>
 
     <!-- Skill Form -->
-    <mat-step [stepControl]="skillsFormGroup" label="Competenze">
+    <mat-step [stepControl]="skillsFormGroup" [label]="getMatLabelI18n('skills') | titlecase">
       <ng-container *ngFor="let skillFormGroup of skillsAsFormGroupArray; let i = index">
         <app-skill-form [formGroup]="skillFormGroup" [index]="i"
                         (deleteEvent)="deleteItem($event, skills)">
@@ -31,7 +31,7 @@
     </mat-step>
 
     <!-- Experience Form -->
-    <mat-step label="Esperienze professionali">
+    <mat-step [label]="getMatLabelI18n('professionalCareer') | titlecase">
       <ng-container *ngFor="let experienceItemFormGroup of experienceItemsAsFormGroupArray; let i = index">
         <app-experience-form [formGroup]="experienceItemFormGroup"
                              [index]="i" (deleteEvent)="deleteItem($event, experienceItems)">
@@ -43,7 +43,7 @@
     </mat-step>
 
     <!-- Contact Form -->
-    <mat-step label="Contatti">
+    <mat-step [label]="getMatLabelI18n('contacts') | titlecase">
       <ng-container *ngFor="let contactFormGroup of contactsAsFormGroupArray; let i = index">
         <app-contact-form [formGroup]="contactFormGroup" [index]="i"
                           (deleteEvent)="deleteItem($event, contacts)">
@@ -55,9 +55,9 @@
     </mat-step>
 
     <!-- Generate CV -->
-    <mat-step label="Genera Curriculum">
+    <mat-step [label]="getMatLabelI18n('generateCv') | titlecase">
       <div>
-        <mat-button-toggle (click)="downloadCV()">Genera</mat-button-toggle>
+        <mat-button-toggle (click)="downloadCV()">{{"generate" | translate | titlecase}}</mat-button-toggle>
       </div>
     </mat-step>
 

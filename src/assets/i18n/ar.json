@@ -1,0 +1,30 @@
+{
+  "personalData": "بيانات شخصية",
+  "education": "مهنة أكاديمية",
+  "skills": "مهارات",
+  "professionalCareer": "مهنة محترفة",
+  "contacts": "جهات الاتصال",
+  "generateCv": "توليد المناهج الدراسية",
+  "generate": "انشاء",
+  "dropFileHere": "إسقاط الملف هنا",
+  "user": {
+    "name": "اسم",
+    "surname": "لقب",
+    "dateOfBirth": "تاريخ الولادة",
+    "email": "البريد الإلكتروني",
+    "phoneNumber": "رقم الهاتف",
+    "address": "تبوك",
+    "intro": "المقدمة"
+  },
+  "skill": "مهارة",
+  "dateOfStart": "تاريخ البدء",
+  "dateOfEnd": "تاريخ النهاية",
+  "location": "موقعك",
+  "description": "وصف",
+  "appliedSkills": "المهارات التطبيقية",
+  "field": "مجال",
+  "degreeTitle": "الدرجة العلمية",
+  "finalDegree": "تصويت",
+  "social": "شبكة اجتماعية",
+  "link": "حلقة الوصل"
+}

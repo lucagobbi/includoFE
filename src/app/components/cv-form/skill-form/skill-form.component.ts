@@ -6,13 +6,10 @@ import {BaseItemComponent} from "../base-item/base-item.component";
   templateUrl: './skill-form.component.html',
   styleUrls: ['./skill-form.component.scss']
 })
-export class SkillFormComponent extends BaseItemComponent implements OnInit {
+export class SkillFormComponent extends BaseItemComponent {
 
-  constructor() {
-    super();
-  }
-
-  ngOnInit(): void {
+  skillLevel(level: number) {
+    return level.toString();
   }
 
 }

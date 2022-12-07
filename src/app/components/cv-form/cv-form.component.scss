@@ -1,0 +1,11 @@
+.fa-pencil {
+  font-size: 0.75rem;
+}
+
+.btn-generate {
+  transition: 0.25s ease-in;
+  &:hover {
+    transform: scale(1.0075);
+    box-shadow: 0px 0px 4px 1px rgba(0,0,0,0.65);
+  }
+}

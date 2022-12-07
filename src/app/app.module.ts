@@ -29,6 +29,8 @@ import { FileDropDirective } from './directives/file-drop.directive';
 import { UploadFileComponent } from './components/upload-file/upload-file.component';
 import {NgxTranslateModule} from "../translate/translate.module";
 import {BsDropdownModule} from "ngx-bootstrap/dropdown";
+import {MatButtonModule} from "@angular/material/button";
+import {MatBadgeModule} from "@angular/material/badge";
 
 @NgModule({
   declarations: [
@@ -63,7 +65,9 @@ import {BsDropdownModule} from "ngx-bootstrap/dropdown";
     MatSliderModule,
     MatTooltipModule,
     BsDropdownModule,
-    NgxTranslateModule
+    NgxTranslateModule,
+    MatButtonModule,
+    MatBadgeModule
   ],
   providers: [],
   bootstrap: [AppComponent]

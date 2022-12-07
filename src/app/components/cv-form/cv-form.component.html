@@ -1,22 +1,20 @@
 <div class="container px-2 py-4">
   <mat-stepper orientation="vertical" [linear]="true">
 
-    <!-- User Form -->
-    <mat-step [stepControl]="userFormGroup" [label]="getMatLabelI18n('personalData') | titlecase">
-      <app-user-form [userFormGroup]="userFormGroup"></app-user-form>
-    </mat-step>
+<!--    &lt;!&ndash; User Form &ndash;&gt;-->
+<!--    <mat-step [stepControl]="userFormGroup" [label]="getMatLabelI18n('personalData') | titlecase">-->
+<!--      <app-user-form [userFormGroup]="userFormGroup"></app-user-form>-->
+<!--    </mat-step>-->
 
-    <!-- Education Form -->
-    <mat-step [stepControl]="educationItemsFormGroup" [label]="getMatLabelI18n('education') | titlecase">
-      <ng-container *ngFor="let educationItemFormGroup of educationItemsAsFormGroupArray; let i = index">
-        <app-education-form [formGroup]="educationItemFormGroup" [index]="i"
-                            (deleteEvent)="deleteItem($event, educationItems)">
-        </app-education-form>
-      </ng-container>
-      <mat-button-toggle mat-mini-fab class="add-btn" (click)="addEducationItem()">
-        <mat-icon>add</mat-icon>
-      </mat-button-toggle>
-    </mat-step>
+<!--    &lt;!&ndash; Education Form &ndash;&gt;-->
+<!--    <mat-step [stepControl]="educationItemsFormGroup" [label]="getMatLabelI18n('education') | titlecase">-->
+<!--      <ng-container *ngFor="let educationItemFormGroup of educationItemsAsFormGroupArray; let i = index">-->
+<!--        <app-education-form [formGroup]="educationItemFormGroup" [index]="i"-->
+<!--                            (deleteEvent)="deleteItem($event, educationItems)">-->
+<!--        </app-education-form>-->
+<!--      </ng-container>-->
+<!--        <mat-icon (click)="addEducationItem()">add</mat-icon>-->
+<!--    </mat-step>-->
 
     <!-- Skill Form -->
     <mat-step [stepControl]="skillsFormGroup" [label]="getMatLabelI18n('skills') | titlecase">
@@ -25,9 +23,7 @@
                         (deleteEvent)="deleteItem($event, skills)">
         </app-skill-form>
       </ng-container>
-      <mat-button-toggle mat-mini-fab (click)="addSkill()">
-        <mat-icon class="add-btn">add</mat-icon>
-      </mat-button-toggle>
+        <mat-icon class="add-btn" (click)="addSkill()">add</mat-icon>
     </mat-step>
 
     <!-- Experience Form -->
@@ -37,9 +33,7 @@
                              [index]="i" (deleteEvent)="deleteItem($event, experienceItems)">
         </app-experience-form>
       </ng-container>
-      <mat-button-toggle mat-mini-fab (click)="addExperienceItem()">
-        <mat-icon class="add-btn">add</mat-icon>
-      </mat-button-toggle>
+        <mat-icon class="add-btn" (click)="addExperienceItem()">add</mat-icon>
     </mat-step>
 
     <!-- Contact Form -->
@@ -49,17 +43,30 @@
                           (deleteEvent)="deleteItem($event, contacts)">
         </app-contact-form>
       </ng-container>
-      <mat-button-toggle mat-mini-fab (click)="addContact()">
-        <mat-icon class="add-btn">add</mat-icon>
-      </mat-button-toggle>
+        <mat-icon class="add-btn" (click)="addContact()">add</mat-icon>
     </mat-step>
 
     <!-- Generate CV -->
     <mat-step [label]="getMatLabelI18n('generateCv') | titlecase">
-      <div>
-        <mat-button-toggle (click)="downloadCV()">{{"generate" | translate | titlecase}}</mat-button-toggle>
+      <div class="w-100 d-flex justify-content-center my-3">
+        <button mat-raised-button color="primary" class="btn-generate text-white" (click)="downloadCV()">{{"generate" | translate | titlecase}}</button>
       </div>
     </mat-step>
 
+    <!-- Icon overrides -->
+    <ng-template matStepperIcon="edit">
+      <i class="fa-solid fa-check text-white"></i>
+    </ng-template>
+    <ng-template matStepperIcon="active">
+      <i class="fa-solid fa-pencil text-white"></i>
+    </ng-template>
+    <ng-template matStepperIcon="done">
+      <i class="fa-solid fa-pencil text-white"></i>
+    </ng-template>
+    <ng-template matStepperIcon="number">
+      <i class="fa-solid fa-pencil text-white"></i>
+    </ng-template>
   </mat-stepper>
+
+
 </div>

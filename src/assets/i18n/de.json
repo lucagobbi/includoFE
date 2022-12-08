@@ -1,4 +1,9 @@
 {
+  "main" : {
+    "startup": "Lasst uns beginnen",
+    "fill": "erzählen Sie mir über sich",
+    "photo": "Laden Sie Ihr Bild hoch"
+  },
   "personalData": "persönliche Daten",
   "education": "akademische Karriere",
   "skills": "Fähigkeiten",

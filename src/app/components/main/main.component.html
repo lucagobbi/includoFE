@@ -1,0 +1,13 @@
+<div class="container mt-4">
+  <mat-tab-group>
+    <mat-tab [label]="i18nService.getMatLabelI18n('main.startup') | titlecase">
+      <h1>{{ 'startup' | translate | titlecase }}</h1>
+    </mat-tab>
+    <mat-tab [label]="i18nService.getMatLabelI18n('main.fill') | titlecase">
+      <app-cv-form></app-cv-form>
+    </mat-tab>
+    <mat-tab [label]="i18nService.getMatLabelI18n('main.photo') | titlecase">
+      <app-upload-file></app-upload-file>
+    </mat-tab>
+  </mat-tab-group>
+</div>

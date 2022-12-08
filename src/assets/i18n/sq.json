@@ -1,4 +1,9 @@
 {
+  "main" : {
+    "startup": "le të fillojmë",
+    "fill": "Më trego për veten tënde",
+    "photo": "Ngarko foton tënde"
+  },
   "personalData": "te dhena Personale",
   "education": "karrierë akademike",
   "skills": "aftësi",

@@ -31,6 +31,9 @@ import {NgxTranslateModule} from "../translate/translate.module";
 import {BsDropdownModule} from "ngx-bootstrap/dropdown";
 import {MatButtonModule} from "@angular/material/button";
 import {MatBadgeModule} from "@angular/material/badge";
+import {MatTabsModule} from "@angular/material/tabs";
+import { MainComponent } from './components/main/main.component';
+import {MatProgressBarModule} from "@angular/material/progress-bar";
 
 @NgModule({
   declarations: [
@@ -44,7 +47,8 @@ import {MatBadgeModule} from "@angular/material/badge";
     ContactFormComponent,
     BaseItemComponent,
     FileDropDirective,
-    UploadFileComponent
+    UploadFileComponent,
+    MainComponent
   ],
   imports: [
     HttpClientModule,
@@ -67,7 +71,9 @@ import {MatBadgeModule} from "@angular/material/badge";
     BsDropdownModule,
     NgxTranslateModule,
     MatButtonModule,
-    MatBadgeModule
+    MatBadgeModule,
+    MatTabsModule,
+    MatProgressBarModule
   ],
   providers: [],
   bootstrap: [AppComponent]

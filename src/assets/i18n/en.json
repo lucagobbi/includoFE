@@ -1,4 +1,9 @@
 {
+  "main" : {
+    "startup": "let's start",
+    "fill": "tell me about yourself",
+    "photo": "upload your picture"
+  },
   "personalData": "personal data",
   "education": "academic career",
   "skills": "skills",

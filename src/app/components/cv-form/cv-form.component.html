@@ -2,12 +2,12 @@
   <mat-stepper orientation="vertical" [linear]="true">
 
 <!--    &lt;!&ndash; User Form &ndash;&gt;-->
-<!--    <mat-step [stepControl]="userFormGroup" [label]="getMatLabelI18n('personalData') | titlecase">-->
+<!--    <mat-step [stepControl]="userFormGroup" [label]="i18nService.getMatLabelI18n('personalData') | titlecase">-->
 <!--      <app-user-form [userFormGroup]="userFormGroup"></app-user-form>-->
 <!--    </mat-step>-->
 
 <!--    &lt;!&ndash; Education Form &ndash;&gt;-->
-<!--    <mat-step [stepControl]="educationItemsFormGroup" [label]="getMatLabelI18n('education') | titlecase">-->
+<!--    <mat-step [stepControl]="educationItemsFormGroup" [label]="i18nService.getMatLabelI18n('education') | titlecase">-->
 <!--      <ng-container *ngFor="let educationItemFormGroup of educationItemsAsFormGroupArray; let i = index">-->
 <!--        <app-education-form [formGroup]="educationItemFormGroup" [index]="i"-->
 <!--                            (deleteEvent)="deleteItem($event, educationItems)">-->
@@ -17,7 +17,7 @@
 <!--    </mat-step>-->
 
     <!-- Skill Form -->
-    <mat-step [stepControl]="skillsFormGroup" [label]="getMatLabelI18n('skills') | titlecase">
+    <mat-step [stepControl]="skillsFormGroup" [label]="i18nService.getMatLabelI18n('skills') | titlecase">
       <ng-container *ngFor="let skillFormGroup of skillsAsFormGroupArray; let i = index">
         <app-skill-form [formGroup]="skillFormGroup" [index]="i"
                         (deleteEvent)="deleteItem($event, skills)">
@@ -27,17 +27,18 @@
     </mat-step>
 
     <!-- Experience Form -->
-    <mat-step [label]="getMatLabelI18n('professionalCareer') | titlecase">
+    <mat-step [label]="i18nService.getMatLabelI18n('professionalCareer') | titlecase">
       <ng-container *ngFor="let experienceItemFormGroup of experienceItemsAsFormGroupArray; let i = index">
         <app-experience-form [formGroup]="experienceItemFormGroup"
-                             [index]="i" (deleteEvent)="deleteItem($event, experienceItems)">
+                             [index]="i" (deleteEvent)="deleteItem($event, experienceItems)"
+                             [skillsFormArray]="skillsAsFormGroupArray">
         </app-experience-form>
       </ng-container>
         <mat-icon class="add-btn" (click)="addExperienceItem()">add</mat-icon>
     </mat-step>
 
     <!-- Contact Form -->
-    <mat-step [label]="getMatLabelI18n('contacts') | titlecase">
+    <mat-step [label]="i18nService.getMatLabelI18n('contacts') | titlecase">
       <ng-container *ngFor="let contactFormGroup of contactsAsFormGroupArray; let i = index">
         <app-contact-form [formGroup]="contactFormGroup" [index]="i"
                           (deleteEvent)="deleteItem($event, contacts)">
@@ -47,7 +48,7 @@
     </mat-step>
 
     <!-- Generate CV -->
-    <mat-step [label]="getMatLabelI18n('generateCv') | titlecase">
+    <mat-step [label]="i18nService.getMatLabelI18n('generateCv') | titlecase">
       <div class="w-100 d-flex justify-content-center my-3">
         <button mat-raised-button color="primary" class="btn-generate text-white" (click)="downloadCV()">{{"generate" | translate | titlecase}}</button>
       </div>

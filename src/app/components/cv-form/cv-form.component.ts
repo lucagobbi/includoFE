@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {FormArray, FormBuilder, FormGroup} from "@angular/forms";
 import {CurriculumService} from "../../service/curriculum.service";
 import {Curriculum} from "../../model/Curriculum";
-import {TranslateService} from "@ngx-translate/core";
+import {I18nService} from "../../service/i18n.service";
 
 @Component({
   selector: 'app-cv-form',
@@ -17,8 +17,8 @@ export class CvFormComponent implements OnInit {
   experienceItemsFormGroup: FormGroup;
   contactsFormGroup: FormGroup;
 
-  constructor(private formBuilder: FormBuilder, private translateService: TranslateService,
-              private curriculumService: CurriculumService) {
+  constructor(private formBuilder: FormBuilder, public i18nService: I18nService,
+              public curriculumService: CurriculumService) {
     this.userFormGroup = this.curriculumService.buildUserFromGroup();
     this.educationItemsFormGroup = this.curriculumService.buildEducationFormGroup()
     this.skillsFormGroup = this.curriculumService.buildSkillsFormGroup();
@@ -27,14 +27,6 @@ export class CvFormComponent implements OnInit {
   }
 
   ngOnInit(): void {}
-
-  getMatLabelI18n(label: string): string {
-    let labelTranslated = '';
-    this.translateService.get(label).subscribe(translation => {
-      labelTranslated = translation;
-    });
-    return labelTranslated;
-  }
 
   downloadCV() {
     const user = this.curriculumService.collectUserData(this.userFormGroup);

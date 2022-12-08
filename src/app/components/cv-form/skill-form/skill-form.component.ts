@@ -1,5 +1,6 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, EventEmitter, Output} from '@angular/core';
 import {BaseItemComponent} from "../base-item/base-item.component";
+import {Skill} from "../../../model/Skill";
 
 @Component({
   selector: 'app-skill-form',
@@ -7,9 +8,5 @@ import {BaseItemComponent} from "../base-item/base-item.component";
   styleUrls: ['./skill-form.component.scss']
 })
 export class SkillFormComponent extends BaseItemComponent {
-
-  skillLevel(level: number) {
-    return level.toString();
-  }
 
 }

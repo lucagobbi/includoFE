@@ -1,4 +1,9 @@
 {
+  "main" : {
+    "startup": "Iniziamo",
+    "fill": "Raccontami di te",
+    "photo": "Carica la tua foto"
+  },
   "personalData": "dati personali",
   "education": "carriera accademica",
   "skills": "competenze",
@@ -27,4 +32,5 @@
   "finalDegree": "voto finale",
   "social": "social network",
   "link": "collegamento"
+
 }

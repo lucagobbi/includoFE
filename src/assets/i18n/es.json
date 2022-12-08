@@ -1,4 +1,9 @@
 {
+  "main" : {
+    "startup": "Empecemos",
+    "fill": "Háblame de ti",
+    "photo": "Sube tu foto"
+  },
   "personalData": "información personal",
   "education": "carrera académica",
   "skills": "habilidades",

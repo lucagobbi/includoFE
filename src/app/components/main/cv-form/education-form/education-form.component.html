@@ -31,5 +31,7 @@
     <mat-label>{{"finalDegree" | translate | titlecase}}</mat-label>
     <input matInput formControlName="graduation">
   </mat-form-field>
-    <mat-icon (click)="deleteItem()">delete_forever</mat-icon>
+  <div>
+    <i class="fa-solid fa-trash" [matTooltip]="i18nService.getTranslation('deleteItem')" (click)="deleteItem()"></i>
+  </div>
 </form>

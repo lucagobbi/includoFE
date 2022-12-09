@@ -1,0 +1,90 @@
+<div class="container px-2 py-4">
+  <mat-stepper orientation="vertical" [linear]="true">
+
+    <!-- User Form -->
+    <mat-step [stepControl]="userFormGroup" [label]="i18nService.getTranslation('personalData') | titlecase">
+      <app-user-form [userFormGroup]="userFormGroup"></app-user-form>
+    </mat-step>
+
+    <!-- Education Form -->
+    <mat-step [stepControl]="educationItemsFormGroup" [label]="i18nService.getTranslation('education') | titlecase">
+      <ng-container *ngFor="let educationItemFormGroup of educationItemsAsFormGroupArray; let i = index">
+        <app-education-form [formGroup]="educationItemFormGroup" [index]="i"
+                            (deleteEvent)="deleteItem($event, educationItems)">
+        </app-education-form>
+      </ng-container>
+      <div class="d-flex justify-content-center">
+        <mat-button-toggle [matTooltip]="i18nService.getTranslation('addEducation')">
+          <mat-icon (click)="addEducationItem()">add</mat-icon>
+        </mat-button-toggle>
+      </div>
+    </mat-step>
+
+    <!-- Skill Form -->
+    <mat-step [stepControl]="skillsFormGroup" [label]="i18nService.getTranslation('skills') | titlecase">
+      <ng-container *ngFor="let skillFormGroup of skillsAsFormGroupArray; let i = index">
+        <app-skill-form [formGroup]="skillFormGroup" [index]="i"
+                        (confirmedSkill)="confirmSkill($event)"
+                        (deleteEvent)="deleteSkill($event)">
+        </app-skill-form>
+      </ng-container>
+      <div class="d-flex justify-content-center">
+        <mat-button-toggle [matTooltip]="i18nService.getTranslation('addSkill')">
+          <mat-icon class="add-btn" (click)="addSkill()">add</mat-icon>
+        </mat-button-toggle>
+      </div>
+    </mat-step>
+
+    <!-- Experience Form -->
+    <mat-step [label]="i18nService.getTranslation('professionalCareer') | titlecase">
+      <ng-container *ngFor="let experienceItemFormGroup of experienceItemsAsFormGroupArray; let i = index">
+        <app-experience-form [formGroup]="experienceItemFormGroup"
+                             [index]="i" (deleteEvent)="deleteItem($event, experienceItems)"
+                             [confirmedSkills]="confirmedSkills">
+        </app-experience-form>
+      </ng-container>
+      <div class="d-flex justify-content-center">
+        <mat-button-toggle [matTooltip]="i18nService.getTranslation('addExperience')">
+          <mat-icon (click)="addExperienceItem()">add</mat-icon>
+        </mat-button-toggle>
+      </div>
+    </mat-step>
+
+    <!-- Contact Form -->
+    <mat-step [label]="i18nService.getTranslation('contacts') | titlecase">
+      <ng-container *ngFor="let contactFormGroup of contactsAsFormGroupArray; let i = index">
+        <app-contact-form [formGroup]="contactFormGroup" [index]="i"
+                          (deleteEvent)="deleteItem($event, contacts)">
+        </app-contact-form>
+      </ng-container>
+      <div class="d-flex justify-content-center">
+        <mat-button-toggle [matTooltip]="i18nService.getTranslation('addContact')">
+          <mat-icon (click)="addContact()">add</mat-icon>
+        </mat-button-toggle>
+      </div>
+    </mat-step>
+
+    <!-- Generate CV -->
+    <mat-step [label]="i18nService.getTranslation('generateCv') | titlecase">
+      <div class="w-100 d-flex justify-content-center my-3 me-2">
+        <button mat-raised-button color="primary" class="btn-generate text-white" (click)="downloadCV()">{{"generate" | translate | titlecase}}</button>
+      </div>
+    </mat-step>
+
+    <!-- Icon overrides -->
+    <ng-template matStepperIcon="edit">
+      <i class="fa-solid fa-check text-white"></i>
+    </ng-template>
+    <ng-template matStepperIcon="active">
+      <i class="fa-solid fa-pencil text-white"></i>
+    </ng-template>
+    <ng-template matStepperIcon="done">
+      <i class="fa-solid fa-pencil text-white"></i>
+    </ng-template>
+    <ng-template matStepperIcon="number">
+      <i class="fa-solid fa-pencil text-white"></i>
+    </ng-template>
+  </mat-stepper>
+
+
+</div>

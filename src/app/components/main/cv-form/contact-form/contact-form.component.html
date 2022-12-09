@@ -7,7 +7,7 @@
     <mat-label>{{"link" | translate | titlecase}}</mat-label>
     <input matInput formControlName="link">
   </mat-form-field>
-  <mat-button-toggle class="delete-btn" >
-    <mat-icon (click)="deleteItem()">delete_forever</mat-icon>
-  </mat-button-toggle>
+  <div>
+    <i class="fa-solid fa-trash" [matTooltip]="i18nService.getTranslation('deleteItem')" (click)="deleteItem()"></i>
+  </div>
 </form>

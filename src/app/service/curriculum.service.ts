@@ -6,7 +6,7 @@ import {EducationItem} from "../model/EducationItem";
 import {Skill} from "../model/Skill";
 import {ExperienceItem} from "../model/ExperienceItem";
 import {Contact} from "../model/Contact";
-import {FormBuilder, FormGroup} from "@angular/forms";
+import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {Observable} from "rxjs";
 
 @Injectable({
@@ -133,7 +133,8 @@ export class CurriculumService {
       skills: this.formBuilder.array([
         this.formBuilder.group({
           title: ['Java'],
-          level: [87]
+          level: [87],
+          confirmed: [false]
         })
       ])
     })
@@ -147,7 +148,7 @@ export class CurriculumService {
           dateOfEnd: [new Date()],
           location: ['Accenture, Milano'],
           description: ['BE developer'],
-          appliedSkills: ['Java']
+          appliedSkills: [[]]
         })])
     })
   }

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {CurriculumService} from "../../service/curriculum.service";
+import {CurriculumService} from "../../../service/curriculum.service";
 
 @Component({
   selector: 'app-upload-file',

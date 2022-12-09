@@ -6,12 +6,12 @@ import {TranslateService} from "@ngx-translate/core";
 })
 export class I18nService {
   constructor(private translateService: TranslateService) { }
-  getMatLabelI18n(label: string): string {
-    let labelTranslated = '';
-    this.translateService.get(label).subscribe(translation => {
-      labelTranslated = translation;
+  getTranslation(msg: string): string {
+    let msgTranslated = '';
+    this.translateService.get(msg).subscribe(translation => {
+      msgTranslated = translation;
     });
-    return labelTranslated;
+    return msgTranslated;
   }
 
 }

@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {FormArray, FormBuilder, FormGroup} from "@angular/forms";
-import {CurriculumService} from "../../service/curriculum.service";
-import {Curriculum} from "../../model/Curriculum";
-import {I18nService} from "../../service/i18n.service";
+import {CurriculumService} from "../../../service/curriculum.service";
+import {Curriculum} from "../../../model/Curriculum";
+import {I18nService} from "../../../service/i18n.service";
+import {Skill} from "../../../model/Skill";
 
 @Component({
   selector: 'app-cv-form',
@@ -16,6 +17,8 @@ export class CvFormComponent implements OnInit {
   skillsFormGroup: FormGroup;
   experienceItemsFormGroup: FormGroup;
   contactsFormGroup: FormGroup;
+
+  confirmedSkills: Skill[] = new Array();
 
   constructor(private formBuilder: FormBuilder, public i18nService: I18nService,
               public curriculumService: CurriculumService) {
@@ -71,9 +74,20 @@ export class CvFormComponent implements OnInit {
   addSkill() {
     const skill = this.formBuilder.group({
       title: [''],
-      level: ['']
+      level: [''],
+      confirmed: [false]
     })
     this.skills.push(skill);
+  }
+
+  confirmSkill(skill: Skill) {
+    this.confirmedSkills.push(skill);
+  }
+
+  deleteSkill(index: number) {
+    const skillFormGroup = this.skills.at(index);
+    this.confirmedSkills = this.confirmedSkills?.filter(skill => skill.title !== skillFormGroup.get('title')?.value);
+    this.deleteItem(index, this.skills);
   }
 
   get experienceItems() {

@@ -7,5 +7,8 @@
     <mat-slider color="primary" min="0" max="100" step="1" formControlName="level" discrete>
     <input matSliderThumb>
     </mat-slider>
-    <mat-icon (click)="deleteItem()">delete_forever</mat-icon>
+    <div class="d-flex justify-content-between">
+      <mat-icon [matTooltip]="i18nService.getTranslation('confirmSkill')" (click)="confirmSkill()">check</mat-icon>
+      <i class="fa-solid fa-trash" [matTooltip]="i18nService.getTranslation('deleteItem')" (click)="deleteItem()"></i>
+    </div>
 </form>

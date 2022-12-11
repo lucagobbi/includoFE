@@ -1,31 +1,74 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import {Curriculum} from "../model/Curriculum";
 import {User} from "../model/User";
 import {EducationItem} from "../model/EducationItem";
 import {Skill} from "../model/Skill";
 import {ExperienceItem} from "../model/ExperienceItem";
 import {Contact} from "../model/Contact";
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {Observable} from "rxjs";
+import {FormBuilder, FormGroup} from "@angular/forms";
+import jsPDF from "jspdf";
+import {Curriculum} from "../model/Curriculum";
+import {I18nService} from "./i18n.service";
+import {TitleCasePipe} from "@angular/common";
 
 @Injectable({
   providedIn: 'root'
 })
 export class CurriculumService {
 
-  imgUrl = 'http://localhost:8080/curriculum/upload';
+  constructor(private http: HttpClient, private formBuilder: FormBuilder,
+              private i18nService: I18nService, private titleCase: TitleCasePipe) {}
 
-  constructor(private http: HttpClient, private formBuilder: FormBuilder) {}
+  generateCv(curriculum: Curriculum, picture: any) {
+    let doc = new jsPDF();
+    let img = this.createImage(picture);
 
-  generateImgPdf(img: any): Observable<any> {
-    const formData = new FormData();
-    formData.append('img', img);
-    return this.http.post(this.imgUrl, formData);
+    // Set the background color of the left column
+    doc.setFillColor(26, 83, 161);
+    doc.rect(20, 20, 60, 260, 'F');
+
+    // Add the user's image to the left column
+    doc.addImage(img, 'JPG', 25, 25, 50, 50);
+
+    // Set the text color to white
+    doc.setTextColor(255, 255, 255);
+
+    // Add the user's name to the left column
+    doc.setFontSize(22);
+    doc.text(curriculum.user.name + ' ' + curriculum.user.surname, 25, 90);
+
+    // Add the user's contact information to the left column
+    doc.setFontSize(12);
+    doc.text(this.getText('user.dateOfBirth', curriculum.user.dateOfBirth), 25, 100);
+    doc.text(this.getText('user.email', curriculum.user.email), 25, 110);
+    doc.text(this.getText('user.phoneNumber', curriculum.user.phoneNumber), 25, 120);
+    doc.text(this.getText('user.address', curriculum.user.address), 25, 130);
+
+    // // Add the user's work experience to the left column
+    // doc.setFontSize(20);
+    // doc.text('Work Experience', 25, 140);
+    // doc.setFontSize(16);
+    // for (var i = 0; i < userWorkExperience.length; i++) {
+    //   doc.text(userWorkExperience[i], 25, 150 + (i * 10));
+    // }
+
+    // Save the PDF
+    doc.save('cv.pdf');
+
+
   }
 
-  generateCV(cv: Curriculum) {
-    alert('Calling back end...\n' + 'Payload: ' + '\n' + JSON.stringify(cv));
+  createImage(data: any): HTMLImageElement {
+    let blob = new Blob([data], { type: 'application/octet-stream'});
+    let img = new Image();
+    let imgUrl = URL.createObjectURL(blob);
+    img.src = imgUrl;
+    return img;
+  }
+
+  getText(label: string, data: string) {
+    let msg = this.titleCase.transform(this.i18nService.getTranslation(label));
+    return msg + ': ' + data;
   }
 
   getUserIntro(userFormGroup: FormGroup): string {
@@ -37,9 +80,9 @@ export class CurriculumService {
       userFormGroup.get('name')?.value,
       userFormGroup.get('surname')?.value,
       userFormGroup.get('dateOfBirth')?.value,
+      userFormGroup.get('email')?.value,
       userFormGroup.get('phoneNumber')?.value,
       userFormGroup.get('address')?.value,
-      userFormGroup.get('intro')?.value
     );
     return user;
   }

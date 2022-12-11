@@ -1,5 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import {CurriculumService} from "../../../service/curriculum.service";
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 
 @Component({
   selector: 'app-upload-file',
@@ -8,10 +7,10 @@ import {CurriculumService} from "../../../service/curriculum.service";
 })
 export class UploadFileComponent implements OnInit {
 
-  private currentUpload!: File;
   dropzoneActive: boolean = false;
+  @Output() picture: EventEmitter<any> = new EventEmitter<any>();
 
-  constructor(private service: CurriculumService) { }
+  constructor() { }
 
   ngOnInit(): void {}
 
@@ -20,19 +19,11 @@ export class UploadFileComponent implements OnInit {
   }
 
   handleClick(event: any) {
-    alert(event.target.files[0].name + ' has been clicked!');
-  }
-  handleDrop(fileList: FileList) {
-    alert(fileList.item(0)?.name + ' has been dropped!');
-    this.service.generateImgPdf(fileList.item(0)).subscribe(value => {
-      this.downLoadFile(value);
-    });
+    this.picture.emit(event.target.files[0]);
   }
 
-  downLoadFile(data: any) {
-    let blob = new Blob([data], { type: 'application/x-download'});
-    let url = window.URL.createObjectURL(blob);
-    window.open(url);
+  handleDrop(fileList: FileList) {
+    this.picture.emit(fileList.item(0));
   }
 
 }

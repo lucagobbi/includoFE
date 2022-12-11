@@ -12,7 +12,7 @@ export function HttpLoaderFactory(http: HttpClient) {
 
   return new TranslateHttpLoader(http,
 
-    './assets/i18n/',
+    './assets/i18n/lang/',
 
     '.json');
 

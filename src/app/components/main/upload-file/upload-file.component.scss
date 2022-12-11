@@ -1,6 +1,8 @@
+$active-color: #1a53a1;
+
 .dropzone {
-  background-color: #d9d7d4;
-  border: 8px dotted rgba(128, 124, 124, 0.8);
+  background-color: #ffffff;
+  border: 3px dashed rgba(128, 124, 124, 0.8);
   border-radius: 15px 15px 15px 15px;
   height: 25vh;
   width: 50vw;
@@ -8,7 +10,6 @@
   justify-content: center;
   align-items: center;
   padding-top: 15px;
-  animation: depale 0.5s forwards;
 
   .fa-cloud-upload {
     color: #807c7c;
@@ -16,7 +17,7 @@
   }
 
   .active-icon {
-    color: #1a53a1;
+    color: $active-color;
     animation: jingle 0.4s linear infinite;
   }
 
@@ -25,49 +26,12 @@
   }
 
   .active-title {
-    color: #1a53a1;
+    color: $active-color;
   }
 }
 
 .active-zone {
-  animation: pale 0.5s forwards;
-}
-
-@keyframes pale {
-  0% {
-    background-color: #d9d7d4;
-  } 20% {
-    background-color: rgba(217, 215, 212, 0.8);
-  } 40% {
-    background-color: rgba(217, 215, 212, 0.6);
-  } 60% {
-    background-color: rgba(217, 215, 212, 0.4);
-  } 80% {
-    background-color: rgba(217, 215, 212, 0.2);
-  } 100% {
-    background-color: rgba(217, 215, 212, 0.1);
-  }
-}
-
-@keyframes depale {
-  0% {
-    background-color: rgba(217, 215, 212, 0.1);
-  }
-  20% {
-    background-color: rgba(217, 215, 212, 0.2);
-  }
-  40% {
-    background-color: rgba(217, 215, 212, 0.4);
-  }
-  60% {
-    background-color: rgba(217, 215, 212, 0.6);
-  }
-  80% {
-    background-color: rgba(217, 215, 212, 0.8);
-  }
-  100% {
-    background-color: #d9d7d4;
-  }
+  border: 3px dashed $active-color;
 }
 
 @keyframes jingle {
@@ -85,4 +49,31 @@
 }
 
 
+/* The CSS for the drag and drop box */
+#drag-and-drop-box {
+  width: 400px;
+  height: 200px;
+  border: 2px dashed #ccc;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
+#drag-and-drop-box p {
+  font-size: 16px;
+  color: #666;
+  text-align: center;
+}
+
+#drag-and-drop-box input[type="file"] {
+  display: none;
+}
+
+/* Styling for when the drag and drop box is being hovered over */
+#drag-and-drop-box:hover {
+  border-color: #999;
+}
+
+#drag-and-drop-box:hover p {
+  color: #999;
+}

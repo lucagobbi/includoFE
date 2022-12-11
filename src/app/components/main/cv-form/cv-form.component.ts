@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {FormArray, FormBuilder, FormGroup} from "@angular/forms";
 import {CurriculumService} from "../../../service/curriculum.service";
 import {Curriculum} from "../../../model/Curriculum";
@@ -20,6 +20,8 @@ export class CvFormComponent implements OnInit {
 
   confirmedSkills: Skill[] = new Array();
 
+  @Output() cv: EventEmitter<Curriculum> = new EventEmitter<Curriculum>();
+
   constructor(private formBuilder: FormBuilder, public i18nService: I18nService,
               public curriculumService: CurriculumService) {
     this.userFormGroup = this.curriculumService.buildUserFromGroup();
@@ -31,15 +33,18 @@ export class CvFormComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  downloadCV() {
+  cvReady() {
+    this.cv.emit(this.buildCv());
+  }
+
+  buildCv(): Curriculum {
     const user = this.curriculumService.collectUserData(this.userFormGroup);
     const intro = this.curriculumService.getUserIntro(this.userFormGroup);
     const educationItems = this.curriculumService.collectEducationData(this.educationItemsAsFormGroupArray);
     const skills = this.curriculumService.collectSkillsData(this.skillsAsFormGroupArray);
     const experienceItems = this.curriculumService.collectExperienceData(this.experienceItemsAsFormGroupArray);
     const contacts = this.curriculumService.collectContactData(this.contactsAsFormGroupArray);
-    const cv = new Curriculum(user, intro, educationItems, experienceItems, skills, contacts);
-    this.curriculumService.generateCV(cv);
+    return new Curriculum(user, intro, educationItems, experienceItems, skills, contacts);
   }
 
   get educationItems() {

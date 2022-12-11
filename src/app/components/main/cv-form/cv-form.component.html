@@ -67,7 +67,7 @@
     <!-- Generate CV -->
     <mat-step [label]="i18nService.getTranslation('generateCv') | titlecase">
       <div class="w-100 d-flex justify-content-center my-3 me-2">
-        <button mat-raised-button color="primary" class="btn-generate text-white" (click)="downloadCV()">{{"generate" | translate | titlecase}}</button>
+        <button mat-raised-button color="primary" class="btn-generate text-white" (click)="cvReady()">{{"generate" | translate | titlecase}}</button>
       </div>
     </mat-step>
 

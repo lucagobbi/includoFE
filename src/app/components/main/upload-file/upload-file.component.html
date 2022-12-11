@@ -6,12 +6,12 @@
        (click)="fileUpload.click()"
        (filesHovered)="dropzoneState($event)"
        (fileDropped)="handleDrop($event)"
-       [ngClass]="{'active-zone': dropzoneActive}">
+       [ngClass]="{'active-zone': dropzoneActive}"
+  >
     <div>
       <i class="fa fa-cloud-upload fa-3x" [ngClass]="{'active-icon': dropzoneActive}"></i>
       <h2 class="title-drop" [ngClass]="{'active-title': dropzoneActive}">{{"dropFileHere" | translate | titlecase}}</h2>
     </div>
   </div>
-
 
 </div>

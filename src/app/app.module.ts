@@ -37,6 +37,8 @@ import {MatProgressBarModule} from "@angular/material/progress-bar";
 import { FooterComponent } from './components/footer/footer.component';
 import {MatSnackBarModule} from "@angular/material/snack-bar";
 import {TooltipModule} from "ngx-bootstrap/tooltip";
+import { GenerateComponent } from './components/main/generate/generate.component';
+import {TitleCasePipe} from "@angular/common";
 
 @NgModule({
   declarations: [
@@ -52,7 +54,8 @@ import {TooltipModule} from "ngx-bootstrap/tooltip";
     FileDropDirective,
     UploadFileComponent,
     MainComponent,
-    FooterComponent
+    FooterComponent,
+    GenerateComponent
   ],
   imports: [
     HttpClientModule,
@@ -81,7 +84,7 @@ import {TooltipModule} from "ngx-bootstrap/tooltip";
     MatSnackBarModule,
     TooltipModule
   ],
-  providers: [],
+  providers: [TitleCasePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

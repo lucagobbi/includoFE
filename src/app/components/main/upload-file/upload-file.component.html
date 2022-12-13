@@ -1,17 +1,20 @@
-<div class="d-flex flex-column justify-content-center p-4">
+<div class="d-flex justify-content-center p-4">
 
   <input type="file" class="d-none" (change)="handleClick($event)"
          accept="image/*" #fileUpload>
-  <div class="dropzone" appFileDrop
+  <div class="dropzone d-flex justify-content-center align-items-center" appFileDrop
        (click)="fileUpload.click()"
        (filesHovered)="dropzoneState($event)"
        (fileDropped)="handleDrop($event)"
-       [ngClass]="{'active-zone': dropzoneActive}"
-  >
-    <div>
-      <i class="fa fa-cloud-upload fa-3x" [ngClass]="{'active-icon': dropzoneActive}"></i>
-      <h2 class="title-drop" [ngClass]="{'active-title': dropzoneActive}">{{"dropFileHere" | translate | titlecase}}</h2>
-    </div>
+       [ngClass]="{'active-zone': dropzoneActive || uploaded}">
+      <div *ngIf="!uploaded">
+        <i class="fa fa-cloud-upload fa-3x" [ngClass]="{'active-icon': dropzoneActive}"></i>
+        <h2 class="title-drop" [ngClass]="{'active-title': dropzoneActive}">{{"dropFileHere" | translate | titlecase}}</h2>
+      </div>
+      <div *ngIf="uploaded">
+        <i class="fa-solid fa-image fa-3x"></i>
+        <h2 class="title-drop active-title">{{"fileUploaded" | translate | titlecase}}</h2>
+      </div>
   </div>
 
 </div>

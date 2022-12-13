@@ -1,0 +1,7 @@
+<h1 mat-dialog-title>Ciao {{data.cv.user.name}}</h1>
+<div mat-dialog-content>
+  <h3>preview</h3>
+</div>
+<div mat-dialog-actions>
+  <button mat-raised-button color="primary" class="btn-generate text-white" (click)="downloadCv()">{{"download" | translate | titlecase}}</button>
+</div>

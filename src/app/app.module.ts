@@ -39,6 +39,8 @@ import {MatSnackBarModule} from "@angular/material/snack-bar";
 import {TooltipModule} from "ngx-bootstrap/tooltip";
 import { GenerateComponent } from './components/main/generate/generate.component';
 import {TitleCasePipe} from "@angular/common";
+import { DownloadCvDialog } from './components/main/download-cv-dialog/download-cv-dialog.component';
+import {MatDialogModule} from "@angular/material/dialog";
 
 @NgModule({
   declarations: [
@@ -55,7 +57,8 @@ import {TitleCasePipe} from "@angular/common";
     UploadFileComponent,
     MainComponent,
     FooterComponent,
-    GenerateComponent
+    GenerateComponent,
+    DownloadCvDialog
   ],
   imports: [
     HttpClientModule,
@@ -82,7 +85,8 @@ import {TitleCasePipe} from "@angular/common";
     MatTabsModule,
     MatProgressBarModule,
     MatSnackBarModule,
-    TooltipModule
+    TooltipModule,
+    MatDialogModule
   ],
   providers: [TitleCasePipe],
   bootstrap: [AppComponent]

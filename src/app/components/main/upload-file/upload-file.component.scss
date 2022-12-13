@@ -6,9 +6,6 @@ $active-color: #1a53a1;
   border-radius: 15px 15px 15px 15px;
   height: 25vh;
   width: 50vw;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   padding-top: 15px;
 
   .fa-cloud-upload {
@@ -32,6 +29,7 @@ $active-color: #1a53a1;
 
 .active-zone {
   border: 3px dashed $active-color;
+  animation: dash-animation 1s linear infinite;
 }
 
 @keyframes jingle {
@@ -45,6 +43,15 @@ $active-color: #1a53a1;
     transform: rotate(-2deg);
   } 100% {
     transform: rotate(0deg);
+  }
+}
+
+@keyframes dash-animation {
+  from {
+    stroke-dashoffset: 0;
+  }
+  to {
+    stroke-dashoffset: 100;
   }
 }
 

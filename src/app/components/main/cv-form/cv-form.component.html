@@ -66,6 +66,11 @@
 
     <!-- Generate CV -->
     <mat-step [label]="i18nService.getTranslation('generateCv') | titlecase">
+
+      <mat-checkbox class="example-margin" (change)="setPrivacy($event.checked)">
+        {{'privacy' | translate | titlecase}}
+      </mat-checkbox>
+
       <div class="w-100 d-flex justify-content-center my-3 me-2">
         <button mat-raised-button color="primary" class="btn-generate text-white" (click)="cvReady()">{{"save" | translate | titlecase}}</button>
       </div>

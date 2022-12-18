@@ -20,6 +20,8 @@ export class CvFormComponent implements OnInit {
 
   confirmedSkills: Skill[] = new Array();
 
+  privacy: boolean = false;
+
   @Output() cv: EventEmitter<Curriculum> = new EventEmitter<Curriculum>();
 
   constructor(private formBuilder: FormBuilder, public i18nService: I18nService,
@@ -44,7 +46,7 @@ export class CvFormComponent implements OnInit {
     const skills = this.curriculumService.collectSkillsData(this.skillsAsFormGroupArray);
     const experienceItems = this.curriculumService.collectExperienceData(this.experienceItemsAsFormGroupArray);
     const contacts = this.curriculumService.collectContactData(this.contactsAsFormGroupArray);
-    return new Curriculum(user, intro, educationItems, experienceItems, skills, contacts);
+    return new Curriculum(user, intro, educationItems, experienceItems, skills, contacts, this.privacy);
   }
 
   get educationItems() {
@@ -132,6 +134,10 @@ export class CvFormComponent implements OnInit {
 
   deleteItem(index: any, formArray: FormArray) {
     formArray.removeAt(index);
+  }
+
+  setPrivacy(checked: boolean){
+    this.privacy = checked;
   }
 
 }

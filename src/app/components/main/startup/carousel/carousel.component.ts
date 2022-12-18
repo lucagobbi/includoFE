@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {OwlOptions} from "ngx-owl-carousel-o";
 @Component({
   selector: 'app-carousel',
@@ -6,6 +6,8 @@ import {OwlOptions} from "ngx-owl-carousel-o";
   styleUrls: ['./carousel.component.scss']
 })
 export class CarouselComponent implements OnInit {
+
+  @Output() templateSelected: EventEmitter<number> = new EventEmitter<number>();
   customOptions: OwlOptions = {
     loop: true,
     mouseDrag: true,
@@ -51,6 +53,7 @@ export class CarouselComponent implements OnInit {
     if(!this.slides[index].selected) {
       this.slides[index].selected = true;
     }
+    this.templateSelected.emit(index);
   }
 
   unselectTemplate(index: number) {

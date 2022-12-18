@@ -52,6 +52,8 @@ export class CurriculumService {
     //   doc.text(userWorkExperience[i], 25, 150 + (i * 10));
     // }
 
+    doc.text(this.getText('privacy', curriculum.user.address), 80, 280);
+
     // Save the PDF
     doc.save('cv.pdf');
 

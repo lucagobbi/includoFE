@@ -44,6 +44,7 @@ import {RouterModule} from "@angular/router";
 import { CarouselComponent } from './components/main/startup/carousel/carousel.component';
 import { StartupComponent } from './components/main/startup/startup.component';
 import {CarouselModule} from "ngx-owl-carousel-o";
+import {MatCheckboxModule} from "@angular/material/checkbox";
 
 @NgModule({
   declarations: [
@@ -64,36 +65,37 @@ import {CarouselModule} from "ngx-owl-carousel-o";
     CarouselComponent,
     StartupComponent
   ],
-  imports: [
-    HttpClientModule,
-    BrowserModule,
-    RouterModule,
-    BrowserAnimationsModule,
-    ReactiveFormsModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatOptionModule,
-    MatSelectModule,
-    MatDatepickerModule,
-    MatNativeDateModule,
-    MatStepperModule,
-    MatIconModule,
-    MatButtonToggleModule,
-    MatToolbarModule,
-    NgbModule,
-    MatSliderModule,
-    MatTooltipModule,
-    BsDropdownModule,
-    NgxTranslateModule,
-    MatButtonModule,
-    MatBadgeModule,
-    MatTabsModule,
-    MatProgressBarModule,
-    MatSnackBarModule,
-    TooltipModule,
-    MatDialogModule,
-    CarouselModule
-  ],
+    imports: [
+        HttpClientModule,
+        BrowserModule,
+        RouterModule,
+        BrowserAnimationsModule,
+        ReactiveFormsModule,
+        MatFormFieldModule,
+        MatInputModule,
+        MatOptionModule,
+        MatSelectModule,
+        MatDatepickerModule,
+        MatNativeDateModule,
+        MatStepperModule,
+        MatIconModule,
+        MatButtonToggleModule,
+        MatToolbarModule,
+        NgbModule,
+        MatSliderModule,
+        MatTooltipModule,
+        BsDropdownModule,
+        NgxTranslateModule,
+        MatButtonModule,
+        MatBadgeModule,
+        MatTabsModule,
+        MatProgressBarModule,
+        MatSnackBarModule,
+        TooltipModule,
+        MatDialogModule,
+        CarouselModule,
+        MatCheckboxModule
+    ],
   providers: [TitleCasePipe],
   bootstrap: [AppComponent]
 })

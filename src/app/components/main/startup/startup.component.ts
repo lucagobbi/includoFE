@@ -7,6 +7,7 @@ import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 })
 export class StartupComponent implements OnInit {
 
+  @Output() templateEvent: EventEmitter<number> = new EventEmitter();
   @Output() startEvent: EventEmitter<any> = new EventEmitter<any>();
 
   constructor() { }
@@ -16,6 +17,10 @@ export class StartupComponent implements OnInit {
 
   start() {
     this.startEvent.emit();
+  }
+
+  templateSelected(index: number) {
+    this.templateEvent.emit(index);
   }
 
 }

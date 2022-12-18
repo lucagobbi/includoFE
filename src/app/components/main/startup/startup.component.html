@@ -4,7 +4,7 @@
   </div>
 
   <div class="container my-5">
-    <app-carousel></app-carousel>
+    <app-carousel (templateSelected)="templateSelected($event)"></app-carousel>
   </div>
 
   <mat-button-toggle class="w-25 m-auto" (click)="start()">{{ 'main.start' | translate | titlecase}}</mat-button-toggle>

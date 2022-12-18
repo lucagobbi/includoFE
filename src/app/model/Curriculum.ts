@@ -12,14 +12,17 @@ export class Curriculum {
   private _skills: Skill[];
   private _contacts: Contact[];
 
+  private _privacy: boolean;
+
   constructor(user: User, intro: string, educationItems: EducationItem[],
-              experienceItems: ExperienceItem[], skills: Skill[], contacts: Contact[]) {
+              experienceItems: ExperienceItem[], skills: Skill[], contacts: Contact[], privacy: boolean) {
     this._user = user;
     this._intro = intro;
     this._educationItems = educationItems;
     this._experienceItems = experienceItems;
     this._skills = skills;
     this._contacts = contacts;
+    this._privacy = privacy;
   }
 
 
@@ -69,5 +72,13 @@ export class Curriculum {
 
   set contacts(value: Contact[]) {
     this._contacts = value;
+  }
+
+  get privacy(): boolean {
+    return this._privacy;
+  }
+
+  set privacy(value: boolean) {
+    this._privacy = value;
   }
 }

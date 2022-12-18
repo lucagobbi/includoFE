@@ -16,6 +16,7 @@ export class MainComponent implements OnInit {
   picture!: any;
   pictureUploaded!: boolean;
   selectedIndex: number = 0;
+  template: number = 1;
 
   constructor(public i18nService: I18nService, private dialog: MatDialog) { }
 
@@ -37,4 +38,7 @@ export class MainComponent implements OnInit {
     }
   }
 
+  setTemplate(index: number) {
+    this.template = index;
+  }
 }

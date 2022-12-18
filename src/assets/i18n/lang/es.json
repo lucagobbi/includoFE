@@ -1,6 +1,6 @@
 {
   "main" : {
-    "startup": "Empecemos",
+    "startup": "Bienvenido a nuestro generador CV, la forma más rápida y eficiente de crear un CV profesional y efectivo. Con solo unos pocos pasos simples, puede construir rápidamente un CV personalizado que muestre sus habilidades y experiencias únicas. Nuestra interfaz intuitiva facilita la creación de un CV que se destaque entre la multitud y lo ayude a que los empleadores potenciales lo noten. Ya sea que sea un graduado reciente, un profesional experimentado o que busque hacer un cambio de carrera, nuestro generador CV lo tiene cubierto. Pruébelo ahora y comience a construir su futuro hoy.",
     "fill": "Háblame de ti",
     "photo": "Sube tu foto"
   },

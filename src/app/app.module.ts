@@ -37,10 +37,13 @@ import {MatProgressBarModule} from "@angular/material/progress-bar";
 import { FooterComponent } from './components/footer/footer.component';
 import {MatSnackBarModule} from "@angular/material/snack-bar";
 import {TooltipModule} from "ngx-bootstrap/tooltip";
-import { GenerateComponent } from './components/main/generate/generate.component';
 import {TitleCasePipe} from "@angular/common";
 import { DownloadCvDialog } from './components/main/download-cv-dialog/download-cv-dialog.component';
 import {MatDialogModule} from "@angular/material/dialog";
+import {RouterModule} from "@angular/router";
+import { CarouselComponent } from './components/main/startup/carousel/carousel.component';
+import { StartupComponent } from './components/main/startup/startup.component';
+import {CarouselModule} from "ngx-owl-carousel-o";
 
 @NgModule({
   declarations: [
@@ -57,12 +60,14 @@ import {MatDialogModule} from "@angular/material/dialog";
     UploadFileComponent,
     MainComponent,
     FooterComponent,
-    GenerateComponent,
-    DownloadCvDialog
+    DownloadCvDialog,
+    CarouselComponent,
+    StartupComponent
   ],
   imports: [
     HttpClientModule,
     BrowserModule,
+    RouterModule,
     BrowserAnimationsModule,
     ReactiveFormsModule,
     MatFormFieldModule,
@@ -86,7 +91,8 @@ import {MatDialogModule} from "@angular/material/dialog";
     MatProgressBarModule,
     MatSnackBarModule,
     TooltipModule,
-    MatDialogModule
+    MatDialogModule,
+    CarouselModule
   ],
   providers: [TitleCasePipe],
   bootstrap: [AppComponent]

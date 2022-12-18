@@ -24,6 +24,7 @@ export class UploadFileComponent implements OnInit {
   }
 
   handleDrop(fileList: FileList) {
+    alert(fileList.item(0)?.name)
     this.picture.emit(fileList.item(0));
   }
 

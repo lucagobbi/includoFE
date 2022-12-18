@@ -1,7 +1,7 @@
 <main class="container mt-4">
-  <mat-tab-group>
-    <mat-tab [label]="i18nService.getTranslation('main.startup') | titlecase">
-      <h1>{{ 'startup' | translate | titlecase }}</h1>
+  <mat-tab-group [selectedIndex]="selectedIndex">
+    <mat-tab [label]="i18nService.getTranslation('startup') | titlecase">
+      <app-startup></app-startup>
     </mat-tab>
     <mat-tab [label]="i18nService.getTranslation('main.photo') | titlecase">
       <app-upload-file [uploaded]="pictureUploaded" (picture)="setImg($event)"></app-upload-file>

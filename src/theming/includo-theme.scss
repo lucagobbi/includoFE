@@ -1,6 +1,15 @@
 @use '../../node_modules/@angular/material/index' as mat;
 
+@import "~@angular/material/theming";
+@import url("https://use.typekit.net/jnq3uxd.css");
+
 @include mat.core();
+
+$custom-typography: mat.define-typography-config(
+  $font-family: "sofia-pro",
+);
+
+@include mat-core($custom-typography);
 
 $includo-palette: (
 50: #e2eaf2,

@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, TemplateRef, ViewChild} from '@angular/core';
 import {I18nService} from "../../service/i18n.service";
 import {Curriculum} from "../../model/Curriculum";
 import {CurriculumService} from "../../service/curriculum.service";
 import {MatDialog} from "@angular/material/dialog";
 import {DownloadCvDialog} from "./download-cv-dialog/download-cv-dialog.component";
+import {MatTabGroup} from "@angular/material/tabs";
 
 @Component({
   selector: 'app-main',
@@ -14,10 +15,15 @@ export class MainComponent implements OnInit {
 
   picture!: any;
   pictureUploaded!: boolean;
+  selectedIndex: number = 0;
 
   constructor(public i18nService: I18nService, private dialog: MatDialog) { }
 
   ngOnInit(): void {}
+
+  moveToNextTab(){
+    this.selectedIndex++;
+  }
 
 
   setCv(cv: Curriculum) {

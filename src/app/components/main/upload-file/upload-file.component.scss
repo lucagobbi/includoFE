@@ -13,74 +13,16 @@ $active-color: #1a53a1;
     margin-left: 35px;
   }
 
-  .active-icon {
-    color: $active-color;
-    animation: jingle 0.4s linear infinite;
-  }
-
   .title-drop {
     color: #807c7c;
   }
 
-  .active-title {
+  .active {
     color: $active-color;
   }
+
 }
 
 .active-zone {
   border: 3px dashed $active-color;
-  animation: dash-animation 1s linear infinite;
-}
-
-@keyframes jingle {
-  0% {
-    transform: rotate(0deg);
-  } 25% {
-    transform: rotate(2deg);
-  } 50% {
-    transform: rotate(0deg);
-  } 75% {
-    transform: rotate(-2deg);
-  } 100% {
-    transform: rotate(0deg);
-  }
-}
-
-@keyframes dash-animation {
-  from {
-    stroke-dashoffset: 0;
-  }
-  to {
-    stroke-dashoffset: 100;
-  }
-}
-
-
-/* The CSS for the drag and drop box */
-#drag-and-drop-box {
-  width: 400px;
-  height: 200px;
-  border: 2px dashed #ccc;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-#drag-and-drop-box p {
-  font-size: 16px;
-  color: #666;
-  text-align: center;
-}
-
-#drag-and-drop-box input[type="file"] {
-  display: none;
-}
-
-/* Styling for when the drag and drop box is being hovered over */
-#drag-and-drop-box:hover {
-  border-color: #999;
-}
-
-#drag-and-drop-box:hover p {
-  color: #999;
 }

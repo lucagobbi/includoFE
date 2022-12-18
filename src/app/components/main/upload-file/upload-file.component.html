@@ -8,12 +8,12 @@
        (fileDropped)="handleDrop($event)"
        [ngClass]="{'active-zone': dropzoneActive || uploaded}">
       <div *ngIf="!uploaded">
-        <i class="fa fa-cloud-upload fa-3x" [ngClass]="{'active-icon': dropzoneActive}"></i>
-        <h2 class="title-drop" [ngClass]="{'active-title': dropzoneActive}">{{"dropFileHere" | translate | titlecase}}</h2>
+        <i class="fa fa-cloud-upload fa-3x" [ngClass]="{'active animate__animated animate__headShake animate__infinite': dropzoneActive}"></i>
+        <h2 class="title-drop" [ngClass]="{'active': dropzoneActive}">{{"dropFileHere" | translate | titlecase}}</h2>
       </div>
       <div *ngIf="uploaded">
-        <i class="fa-solid fa-image fa-3x"></i>
-        <h2 class="title-drop active-title">{{"fileUploaded" | translate | titlecase}}</h2>
+        <i class="fa-solid fa-image fa-3x" style="margin-left: 40px" [ngClass]="{'active': uploaded}"></i>
+        <h2 class="title-drop active">{{"fileUploaded" | translate | titlecase}}</h2>
       </div>
   </div>
 

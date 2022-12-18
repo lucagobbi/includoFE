@@ -1,0 +1,16 @@
+$active-color: #1a53a1;
+
+.template-item {
+  cursor: pointer;
+  transition: 0.25s ease-in-out;
+  &:hover {
+    transform: scale(1.02);
+  }
+
+}
+
+.selected {
+  transition: 0s;
+  transform: scale(1.02);
+  border: 5px solid $active-color;
+}

@@ -1,0 +1,12 @@
+<div class="d-flex flex-column justify-content-center">
+  <div class="container text-center mt-4 p-4 fs-6">
+    <p>{{ 'main.startup' | translate }}</p>
+  </div>
+
+  <div class="container my-5">
+    <app-carousel></app-carousel>
+  </div>
+
+  <mat-button-toggle class="w-25 m-auto" (click)="start()">{{ 'main.start' | translate | titlecase}}</mat-button-toggle>
+
+</div>

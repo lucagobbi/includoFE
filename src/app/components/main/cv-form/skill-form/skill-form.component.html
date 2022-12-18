@@ -8,7 +8,7 @@
     <input matSliderThumb>
     </mat-slider>
     <div class="d-flex justify-content-between">
-      <mat-icon [matTooltip]="i18nService.getTranslation('confirmSkill')" (click)="confirmSkill()">check</mat-icon>
-      <i class="fa-solid fa-trash" [matTooltip]="i18nService.getTranslation('deleteItem')" (click)="deleteItem()"></i>
+      <mat-icon *ngIf="!formGroup.controls['confirmed'].value" [matTooltip]="i18nService.getTranslation('confirmSkill')" (click)="confirmSkill()">check</mat-icon>
+      <i class="fa-solid fa-trash ms-auto" [matTooltip]="i18nService.getTranslation('deleteItem')" (click)="deleteItem()"></i>
     </div>
 </form>

@@ -22,6 +22,11 @@ export class CurriculumService {
   generateCv(curriculum: Curriculum, picture: any) {
     let doc = new jsPDF();
     let img = this.createImage(picture);
+    let loremipsum = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus id eros turpis. Vivamus tempor urna vitae sapien mollis molestie. Vestibulum in lectus non enim bibendum laoreet at at libero. Etiam malesuada erat sed sem blandit in varius orci porttitor. Sed at sapien urna. Fusce augue ipsum, molestie et adipiscing at, varius quis enim. Morbi sed magna est, vel vestibulum urna. Sed tempor ipsum vel mi pretium at elementum urna tempor. Nulla faucibus consectetur felis, elementum venenatis mi mollis gravida. Aliquam mi ante, accumsan eu tempus vitae, viverra quis justo.\n\nProin feugiat augue in augue rhoncus eu cursus tellus laoreet. Pellentesque eu sapien at diam porttitor venenatis nec vitae velit. Donec ultrices volutpat lectus eget vehicula. Nam eu erat mi, in pulvinar eros. Mauris viverra porta orci, et vehicula lectus sagittis id. Nullam at magna vitae nunc fringilla posuere. Duis volutpat malesuada ornare. Nulla in eros metus. Vivamus a posuere libero.'
+    let margin = 0.5;
+    doc.setLineWidth(1/72).line(margin, margin, margin, 11 - margin).line(8.5 - margin, margin, 8.5 - margin, 11 - margin);
+
+    doc.splitTextToSize(loremipsum, 7.5)
 
     // Set the background color of the left column
     doc.setFillColor(26, 83, 161);
@@ -52,7 +57,11 @@ export class CurriculumService {
     //   doc.text(userWorkExperience[i], 25, 150 + (i * 10));
     // }
 
-    doc.text(this.getText('privacy', curriculum.user.address), 80, 280);
+    doc.setTextColor(0, 0, 0, 90);
+
+    doc.setFontSize(9);
+
+    doc.text(this.getText('privacy', curriculum.user.address), 85, 275);
 
     // Save the PDF
     doc.save('cv.pdf');
@@ -69,7 +78,7 @@ export class CurriculumService {
   }
 
   getText(label: string, data: string) {
-    let msg = this.titleCase.transform(this.i18nService.getTranslation(label));
+    let msg = this.i18nService.getTranslation(label);
     return msg + ': ' + data;
   }
 
